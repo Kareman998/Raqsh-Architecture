@@ -59,6 +59,9 @@
             padding-inline: clamp(14px, 3.5vw, 60px);
         }
 
+        /* تحسين قابلية القراءة وكسر النصوص الطويلة */
+        h1, h2, h3, h4, h5, h6, p { overflow-wrap: anywhere; }
+
         /* Header */
         header {
             position: sticky;
@@ -88,6 +91,8 @@
             display: flex;
             gap: clamp(12px, 3vw, 40px);
             align-items: center;
+            flex-wrap: wrap;
+            row-gap: 8px;
         }
 
         .nav-item {
@@ -171,7 +176,6 @@
             transform: translateY(-10px);
             transition: all 0.3s;
             min-width: 180px;
-            max-width: clamp(180px, 90vw, 260px);
         }
 
         .language-dropdown.active {
@@ -1141,8 +1145,8 @@
         /* بطاقات الرؤية */
         .vision-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: clamp(30px, 5vw, 50px);
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: clamp(20px, 5vw, 40px);
         }
 
         .vision-card {
@@ -1288,7 +1292,7 @@
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: clamp(24px, 4vw, 40px);
             max-width: 1400px;
             margin: 0 auto;
@@ -1452,7 +1456,7 @@
         /* قائمة الموبايل */
         @media (max-width: 900px) {
             .header-inner {
-                grid-template-columns: auto 1fr auto auto;
+                grid-template-columns: auto 1fr auto;
             }
 
             .menu-toggle { 
@@ -1469,6 +1473,7 @@
             .connect-btn {
                 overflow: hidden;
             }
+            .header-actions { flex-wrap: wrap; }
             
             nav {
                 position: absolute;
@@ -1513,6 +1518,16 @@
             .connect-btn {
                 display: none !important;
             }
+            .header-actions {
+                gap: 8px;
+            }
+            .header-icon-link {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            /* إخفاء أيقونة الموقع لتوفير مساحة على الشاشات الصغيرة جدًا */
+            .header-icon-link.location { display: none; }
             
             .partners-title {
                 font-size: 24px;
@@ -1545,9 +1560,6 @@
             .nav-item, .connect-btn { padding: 12px; }
         }
         .header-actions {
-                gap: 8px;
-            }
-            .header-actions {
             display: flex;
             gap: clamp(12px, 2vw, 18px);
             align-items: center;
@@ -2137,7 +2149,7 @@
     <div id="designs" class="section">
         <div class="content-section container">
             <h2>تصاميم خاصة</h2>
-            <p style="font-size: clamp(16px, 2.8vw, 22px); line-height: 2; color: #333; font-weight: 500; margin-bottom: var(--space-4); text-align: center; max-width: 900px; margin-inline: auto;">
+            <p style="font-size: clamp(16px, 2.8vw, 22px); line-height: 2; color: #333; font-weight: 500; margin-bottom: var(--space-4); text-align: center; max-width: min(90ch, 100%); margin-inline: auto;">
                 نقدم مجموعة متنوعة من <strong style="color: var(--brand-dark); font-weight: 800;">التصاميم الخاصة</strong> التي تلبي احتياجاتك وتعكس ذوقك الفريد.<br>
                 من <strong style="color: var(--accent);">تصميم الإنارة</strong> إلى <strong style="color: var(--accent);">الأثاث</strong> و<strong style="color: var(--accent);">ورق الجدران</strong>، نحن هنا لنحول رؤيتك إلى واقع.
             </p>
