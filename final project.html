@@ -39,7 +39,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            min-width: 0;
         }
 
         html, body {
@@ -51,14 +50,7 @@
             background: var(--bg);
             color: var(--ink);
             line-height: 1.6;
-            overflow-x: hidden;
         }
-
-        html { scroll-behavior: smooth; }
-
-        /* وسائط عامة لضمان السلوك المرن */
-        img, picture, video, canvas, svg { max-width: 100%; height: auto; display: block; }
-        iframe { max-width: 100%; }
 
         /* حاوية عامة */
         .container {
@@ -179,6 +171,7 @@
             transform: translateY(-10px);
             transition: all 0.3s;
             min-width: 180px;
+            max-width: clamp(180px, 90vw, 260px);
         }
 
         .language-dropdown.active {
@@ -393,9 +386,8 @@
         /* صورة Hero مع تأثير Hover والانتقال التلقائي */
         .hero-image {
             position: relative;
-            aspect-ratio: 16 / 9;
-            min-height: clamp(240px, 56vw, 560px);
-            height: auto;
+            min-height: 500px;
+            height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -409,7 +401,7 @@
             position: relative;
             width: 100%;
             height: 100%;
-            min-height: 0;
+            min-height: 500px;
             overflow: hidden;
             border-radius: var(--radius);
         }
@@ -433,7 +425,7 @@
 
         .hero-image-wrapper img.logo {
             object-fit: contain;
-            padding: clamp(12px, 6vw, 60px);
+            padding: 60px;
             /*background: white;*/
         }
 
@@ -554,7 +546,6 @@
             color: var(--ink);
             direction: ltr;
             text-align: start;
-            overflow-wrap: anywhere;
         }
         .registration-info {
             display: grid;
@@ -585,7 +576,6 @@
             font-family: 'Cairo', sans-serif;
             color: var(--brand-dark);
             direction: ltr;
-            overflow-wrap: anywhere;
         }
 
         .vertical-divider {
@@ -860,7 +850,7 @@
         .design-image-wrapper {
             position: relative;
             width: 100%;
-            height: clamp(220px, 50vw, 400px);
+            height: 400px;
             overflow: hidden;
             background: linear-gradient(135deg, #f5f5f0 0%, #e8e3dc 100%);
         }
@@ -960,7 +950,7 @@
         .project-card-image {
             width: 100%;
             height: 100%;
-            min-height: clamp(180px, 45vw, 300px);
+            min-height: 300px;
             position: relative;
             overflow: hidden;
         }
@@ -1321,7 +1311,7 @@
 
         .team-member-image {
             width: 100%;
-            height: clamp(220px, 55vw, 350px);
+            height: 350px;
             overflow: hidden;
             position: relative;
         }
@@ -1473,7 +1463,7 @@
             
             .logo {
                 justify-self: start;
-                margin-inline-start: 0;
+                margin-inline-start: 70px;
             }
             
             .connect-btn {
@@ -1497,7 +1487,6 @@
                 pointer-events: none;
                 transition: transform 0.2s, opacity 0.2s;
                 min-width: 200px;
-                max-width: calc(100vw - 24px);
             }
          
             nav.open {
@@ -1538,7 +1527,7 @@
             }
             
             .team-member-image {
-                height: clamp(220px, 55vw, 300px);
+                height: 300px;
             }
 
             .projects-masonry {
@@ -1548,16 +1537,6 @@
             .project-card:nth-child(1),
             .project-card:nth-child(4) {
                 grid-row: span 1;
-            }
-        }
-
-        /* تقليل الحركة للمستخدمين الذين يفضلون ذلك */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.001ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.001ms !important;
-                scroll-behavior: auto !important;
             }
         }
 
@@ -2201,35 +2180,32 @@
     </div>
 
     <script>
-        // تأثير الانتقال التلقائي بين الصور (مع مراعاة تفضيل تقليل الحركة)
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // تأثير الانتقال التلقائي بين الصور
         const heroSlider = document.getElementById('heroImageSlider');
-        if (heroSlider && !prefersReducedMotion) {
-            const heroImages = heroSlider.querySelectorAll('img');
-            let currentImageIndex = 0;
-            let sliderInterval;
+        const heroImages = heroSlider.querySelectorAll('img');
+        let currentImageIndex = 0;
+        let sliderInterval;
 
-            function showNextImage() {
-                heroImages[currentImageIndex].classList.remove('active');
-                currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-                heroImages[currentImageIndex].classList.add('active');
-            }
-
-            function startSlider() {
-                sliderInterval = setInterval(showNextImage, 3000); // تغيير الصورة كل 3 ثواني
-            }
-
-            function stopSlider() {
-                clearInterval(sliderInterval);
-            }
-
-            // إيقاف الانتقال عند الـ hover واستئنافه عند المغادرة
-            heroSlider.addEventListener('mouseenter', stopSlider);
-            heroSlider.addEventListener('mouseleave', startSlider);
-
-            // بدء الانتقال التلقائي
-            startSlider();
+        function showNextImage() {
+            heroImages[currentImageIndex].classList.remove('active');
+            currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+            heroImages[currentImageIndex].classList.add('active');
         }
+
+        function startSlider() {
+            sliderInterval = setInterval(showNextImage, 3000); // تغيير الصورة كل 3 ثواني
+        }
+
+        function stopSlider() {
+            clearInterval(sliderInterval);
+        }
+
+        // إيقاف الانتقال عند الـ hover واستئنافه عند المغادرة
+        heroSlider.addEventListener('mouseenter', stopSlider);
+        heroSlider.addEventListener('mouseleave', startSlider);
+
+        // بدء الانتقال التلقائي
+        startSlider();
 
         // زر همبرجر لفتح/إغلاق القائمة
         const menuToggle = document.querySelector('.menu-toggle');
@@ -2290,13 +2266,10 @@
             });
         });
 
-        // زر التواصل (قد لا يكون موجودًا في كل الصفحات)
-        const connectBtnEl = document.querySelector('.connect-btn');
-        if (connectBtnEl) {
-            connectBtnEl.addEventListener('click', () => {
-                alert('شكراً لاهتمامك! سنتواصل معك قريباً.');
-            });
-        }
+        // زر التواصل
+        document.querySelector('.connect-btn').addEventListener('click', () => {
+            alert('شكراً لاهتمامك! سنتواصل معك قريباً.');
+        });
     </script>
 </body>
 </html>
