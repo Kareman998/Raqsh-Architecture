@@ -1493,6 +1493,37 @@
                 opacity: 1;
                 pointer-events: auto;
             }
+            /* ضع مبدل اللغة داخل قائمة الهاتف */
+            nav .language-switcher,
+            .language-switcher.in-nav {
+                width: 100%;
+                margin-top: 8px;
+                padding-top: 8px;
+                border-top: 1px solid rgba(0,0,0,0.08);
+            }
+            nav .language-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            nav .language-dropdown {
+                position: static;
+                right: auto;
+                top: auto;
+                transform: none;
+                width: 100%;
+                min-width: 0;
+                box-shadow: none;
+                margin-top: 8px;
+                opacity: 0;
+                visibility: hidden;
+                max-height: 0;
+                transition: max-height 0.3s ease, opacity 0.3s ease;
+            }
+            nav .language-dropdown.active {
+                opacity: 1;
+                visibility: visible;
+                max-height: 300px;
+            }
             
             .nav-item.active::after {
                 inset-inline-start: auto;
@@ -1640,6 +1671,7 @@
                         </a>
                     </div>
                 </div>
+                <span id="lang-switcher-placeholder" style="display:none"></span>
                 <button type="button" class="connect-btn">تواصل معنا</button>
             </div>
             
@@ -2221,6 +2253,8 @@
         // مبدل اللغات
         const languageBtn = document.getElementById('languageBtn');
         const languageDropdown = document.getElementById('languageDropdown');
+        const languageSwitcher = document.querySelector('.language-switcher');
+        const langSwitcherPlaceholder = document.getElementById('lang-switcher-placeholder');
         
         if (languageBtn && languageDropdown) {
             languageBtn.addEventListener('click', (e) => {
@@ -2243,6 +2277,34 @@
                 option.addEventListener('click', () => {
                     // السماح بالتوجيه للرابط
                 });
+            });
+        }
+
+        // نقل مبدل اللغة داخل القائمة على الشاشات الصغيرة وإعادته على الكبيرة
+        function placeLanguageSwitcher() {
+            if (!languageSwitcher || !nav || !langSwitcherPlaceholder) return;
+            const isSmall = window.matchMedia('(max-width: 900px)').matches;
+            if (isSmall) {
+                if (languageSwitcher.parentElement !== nav) {
+                    nav.appendChild(languageSwitcher);
+                    languageSwitcher.classList.add('in-nav');
+                }
+            } else {
+                if (languageSwitcher.parentElement !== langSwitcherPlaceholder.parentElement) {
+                    langSwitcherPlaceholder.before(languageSwitcher);
+                    languageSwitcher.classList.remove('in-nav');
+                }
+                // أغلق القائمة المنسدلة إن كانت مفتوحة
+                languageBtn?.classList.remove('active');
+                languageDropdown?.classList.remove('active');
+            }
+        }
+        placeLanguageSwitcher();
+        window.addEventListener('resize', placeLanguageSwitcher);
+        // تأكيد الوضع الصحيح بعد فتح/إغلاق قائمة الهاتف
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', () => {
+                placeLanguageSwitcher();
             });
         }
 
