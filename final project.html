@@ -1640,6 +1640,7 @@
                         </a>
                     </div>
                 </div>
+                <button type="button" class="connect-btn">تواصل معنا</button>
             </div>
             
         </div>
@@ -1678,7 +1679,7 @@
             <div class="divider"></div>
 
             <div class="bottom-section">
-                <div class="contact-card">
+                <div class="contact-card" id="contact">
                     <h3 class="contact-title">تواصل معنا</h3>
                     <div class="contact-methods">
                         <a href="mailto:info@raqsh-architecture.org" class="contact-item">
@@ -2265,10 +2266,24 @@
             });
         });
 
-        // زر التواصل
-        document.querySelector('.connect-btn').addEventListener('click', () => {
-            alert('شكراً لاهتمامك! سنتواصل معك قريباً.');
-        });
+        // زر التواصل: الذهاب إلى قسم من نحن ثم تمرير إلى بطاقة التواصل
+        const connectButton = document.querySelector('.connect-btn');
+        if (connectButton) {
+            connectButton.addEventListener('click', () => {
+                // إظهار قسم من نحن إذا لم يكن ظاهرًا
+                sections.forEach(section => section.classList.remove('active'));
+                document.getElementById('home').classList.add('active');
+                navItems.forEach(navEl => navEl.classList.remove('active'));
+                const homeNavItem = Array.from(navItems).find(el => el.getAttribute('data-section') === 'home');
+                if (homeNavItem) homeNavItem.classList.add('active');
+
+                // تمرير سلس إلى بطاقة التواصل
+                const contactEl = document.getElementById('contact');
+                if (contactEl) {
+                    contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        }
     </script>
 </body>
 </html>
