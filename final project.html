@@ -1,20 +1,19 @@
-
-<!-- Arabic -->
+<!-- English -->
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>رقش العمارة - معهد التطوير العمراني</title>
-     <link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-/>
-    <!-- خطوط عربية جميلة من Google Fonts -->
+    <title>Raqsh Architecture - Institute of Urban Development</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Nice Arabic-friendly Google Fonts (work with Latin too) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;800;900&family=Amiri:wght@400;700&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --bg: #f5f5f0;
@@ -26,7 +25,7 @@
             --paper: #e8e3dc;
             --card: #ffffff;
 
-            /* سلالم معيارية */
+            /* Modular scale */
             --space-1: clamp(8px, 1.4vw, 12px);
             --space-2: clamp(12px, 1.8vw, 16px);
             --space-3: clamp(16px, 2.4vw, 24px);
@@ -41,9 +40,7 @@
             box-sizing: border-box;
         }
 
-        html, body {
-            height: 100%;
-        }
+        html, body { height: 100%; }
 
         body {
             font-family: 'Tajawal', 'Cairo', sans-serif;
@@ -52,7 +49,7 @@
             line-height: 1.6;
         }
 
-        /* حاوية عامة */
+        /* Container */
         .container {
             width: min(1800px, 100%);
             margin-inline: auto;
@@ -111,11 +108,8 @@
             font-size: 0.9em;
         }
 
-        /* مبدل اللغات */
-        .language-switcher {
-            position: relative;
-            z-index: 102;
-        }
+        /* Language switcher */
+        .language-switcher { position: relative; z-index: 102; }
 
         .language-btn {
             background: white;
@@ -139,12 +133,7 @@
             box-shadow: 0 4px 12px rgba(105, 108, 78, 0.3);
         }
 
-        .language-btn img {
-            width: 22px;
-            height: 16px;
-            object-fit: cover;
-            border-radius: 2px;
-        }
+        .language-btn img { width: 22px; height: 16px; object-fit: cover; border-radius: 2px; }
 
         .language-btn::after {
             content: '▼';
@@ -152,10 +141,7 @@
             margin-inline-start: 4px;
             transition: transform 0.3s;
         }
-
-        .language-btn.active::after {
-            transform: rotate(180deg);
-        }
+        .language-btn.active::after { transform: rotate(180deg); }
 
         .language-dropdown {
             position: absolute;
@@ -166,1468 +152,329 @@
             border-radius: 12px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.15);
             overflow: hidden;
-            opacity: 0;
-            visibility: hidden;
+            opacity: 0; visibility: hidden;
             transform: translateY(-10px);
             transition: all 0.3s;
             min-width: 180px;
         }
-
-        .language-dropdown.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
+        .language-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
 
         .language-option {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 14px 18px;
-            cursor: pointer;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 600;
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 18px; cursor: pointer;
+            font-family: 'Cairo', sans-serif; font-weight: 600;
             font-size: clamp(13px, 1.8vw, 15px);
-            transition: all 0.2s;
-            text-decoration: none;
-            color: var(--ink);
+            transition: all 0.2s; text-decoration: none; color: var(--ink);
         }
+        .language-option:hover { background: linear-gradient(135deg, #f5f5f0 0%, #e8e3dc 100%); padding-inline-start: 24px; }
+        .language-option.current { background: var(--brand); color: white; }
+        .language-option img { width: 28px; height: 20px; object-fit: cover; border-radius: 3px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+        .language-option:not(:last-child) { border-bottom: 1px solid rgba(0,0,0,0.08); }
 
-        .language-option:hover {
-            background: linear-gradient(135deg, #f5f5f0 0%, #e8e3dc 100%);
-            padding-inline-start: 24px;
-        }
-
-        .language-option.current {
-            background: var(--brand);
-            color: white;
-        }
-
-        .language-option img {
-            width: 28px;
-            height: 20px;
-            object-fit: cover;
-            border-radius: 3px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        .language-option:not(:last-child) {
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-        }
-
-        /* زر تواصل */
+        /* Contact button */
         .connect-btn {
             background: var(--ink);
             color: white;
             padding: clamp(10px, 1.8vw, 14px) clamp(18px, 3vw, 35px);
-            border: none;
-            border-radius: 999px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: clamp(14px, 2vw, 20px);
-            font-family: 'Cairo', sans-serif;
-            letter-spacing: 0.5px;
-            transition: transform 0.2s, background 0.2s;
+            border: none; border-radius: 999px; cursor: pointer;
+            font-weight: 700; font-size: clamp(14px, 2vw, 20px); font-family: 'Cairo', sans-serif;
+            letter-spacing: 0.5px; transition: transform 0.2s, background 0.2s;
         }
         .connect-btn:hover { background: #696c4e; transform: scale(1.04); }
 
-        /* زر للموبايل */
+        /* Mobile menu button */
         .menu-toggle {
-            display: none;
-            background: transparent;
-            border: 2px solid var(--ink);
-            border-radius: 10px;
-            padding: 8px 10px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            display: none; background: transparent; border: 2px solid var(--ink);
+            border-radius: 10px; padding: 8px 10px; font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: all 0.3s ease;
         }
-        .menu-toggle.open {
-            background: var(--brand);
-            border-color: var(--brand);
-            color: white;
-        }
+        .menu-toggle.open { background: var(--brand); border-color: var(--brand); color: white; }
 
-        /* فاصل */
+        /* Divider */
         .divider {
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--ink), transparent);
-            position: relative;
-            margin-block: var(--space-2);
+            width: 100%; height: 2px; background: linear-gradient(to right, transparent, var(--ink), transparent);
+            position: relative; margin-block: var(--space-2);
         }
         .divider::after {
-            content: '✦';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--paper);
-            padding: 0 10px;
-            font-size: 18px;
+            content: '✦'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+            background: var(--paper); padding: 0 10px; font-size: 18px;
         }
 
-        /* أقسام */
+        /* Sections */
         .section { display: none; animation: fadeIn 0.5s ease-in; }
         .section.active { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
 
         /* Hero */
-        .hero-section {
-            padding-block: var(--space-5);
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-5);
-        }
-
+        .hero-section { padding-block: var(--space-5); display: grid; grid-template-columns: 1fr; gap: var(--space-5); }
         .hero-content h1 {
-            font-family: 'Cairo', sans-serif;
-            font-size: clamp(32px, 7vw, 78px);
-            line-height: 1.3;
-            margin-bottom: var(--space-3);
-            word-wrap: break-word;
-            font-weight: 900;
+            font-family: 'Cairo', sans-serif; font-size: clamp(32px, 7vw, 78px);
+            line-height: 1.3; margin-bottom: var(--space-3); word-wrap: break-word; font-weight: 900;
         }
-
-        .hero-title-main {
-            display: block;
-            font-size: clamp(26px, 5.5vw, 40px);
-            color: #555;
-            font-weight: 700;
-            margin-bottom: 0.4em;
-            font-family: 'Cairo', sans-serif;
-            letter-spacing: 2px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
+        .hero-title-main { display: block; font-size: clamp(26px, 5.5vw, 40px); color: #555; font-weight: 700; margin-bottom: 0.4em; font-family: 'Cairo', sans-serif; letter-spacing: 2px; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
         .hero-title-brand {
-            display: block;
-            font-size: clamp(48px, 10vw, 110px);
+            display: block; font-size: clamp(48px, 10vw, 110px);
             background: linear-gradient(120deg, #696c4e 0%, #814a1f 25%, #696c4e 60%, #696c4e 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-weight: 700;
-            margin-bottom: 0.5em;
-            font-family: 'Amiri', serif;
-            letter-spacing: 5px;
-            position: relative;
-            text-transform: none;
-            filter: drop-shadow(3px 3px 5px rgba(139, 87, 42, 0.4));
-            animation: shimmer 3s ease-in-out infinite;
-            background-size: 200% auto;
-            line-height: 1.5;
-            padding-top: 0.2em;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            font-weight: 700; margin-bottom: 0.5em; font-family: 'Amiri', serif; letter-spacing: 5px; position: relative; text-transform: none;
+            filter: drop-shadow(3px 3px 5px rgba(139, 87, 42, 0.4)); animation: shimmer 3s ease-in-out infinite; background-size: 200% auto; line-height: 1.5; padding-top: 0.2em;
         }
-
-        @keyframes shimmer {
-            0%, 100% { background-position: 0% center; }
-            50% { background-position: 100% center; }
-        }
-
+        @keyframes shimmer { 0%, 100% { background-position: 0% center; } 50% { background-position: 100% center; } }
         .hero-description {
-            font-family: 'Tajawal', sans-serif;
-            font-size: clamp(16px, 3.2vw, 28px);
-            line-height: 1.9;
-            color: #444;
-            font-weight: 400;
-            margin-top: var(--space-3);
-            padding: var(--space-3);
+            font-family: 'Tajawal', sans-serif; font-size: clamp(16px, 3.2vw, 28px); line-height: 1.9; color: #444; font-weight: 400;
+            margin-top: var(--space-3); padding: var(--space-3);
             background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(232,227,220,0.4) 100%);
-            border-radius: var(--radius);
-            border-right: 5px solid var(--accent);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-radius: var(--radius); border-right: 5px solid var(--accent); box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
+        .hero-description strong { font-weight: 800; color: var(--brand-dark); font-size: 1.1em; font-family: 'Cairo', sans-serif; }
 
-        .hero-description strong {
-            font-weight: 800;
-            color: var(--brand-dark);
-            font-size: 1.1em;
-            font-family: 'Cairo', sans-serif;
-        }
+        .decorative-line { width: 150px; height: 5px; background: linear-gradient(90deg, #C4956C 0%, #8B572A 30%, #4a7c7e 70%, #2d5456 100%); margin: var(--space-3) 0; border-radius: 3px; position: relative; box-shadow: 0 2px 8px rgba(139, 87, 42, 0.3); }
+        .decorative-line::before, .decorative-line::after { content: '◆'; position: absolute; background: linear-gradient(135deg, #8B572A, #4a7c7e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 16px; top: -6px; font-weight: bold; }
+        .decorative-line::before { right: -25px; } .decorative-line::after { left: -25px; }
 
-        .decorative-line {
-            width: 150px;
-            height: 5px;
-            background: linear-gradient(90deg, #C4956C 0%, #8B572A 30%, #4a7c7e 70%, #2d5456 100%);
-            margin: var(--space-3) 0;
-            border-radius: 3px;
-            position: relative;
-            box-shadow: 0 2px 8px rgba(139, 87, 42, 0.3);
-        }
+        /* Hero image with hover and auto transition */
+        .hero-image { position: relative; min-height: 500px; height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(135deg, #f5f5f0 0%, #e8e3dc 100%); border-radius: var(--radius); box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .hero-image-wrapper { position: relative; width: 100%; height: 100%; min-height: 500px; overflow: hidden; border-radius: var(--radius); }
+        .hero-image-wrapper img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0; transition: transform 0.4s ease, opacity 1s ease; }
+        .hero-image-wrapper img.active { opacity: 1; z-index: 1; }
+        .hero-image-wrapper img.logo { object-fit: contain; padding: 60px; }
+        .hero-image-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 0; background: linear-gradient(135deg, rgb(105, 108, 78, 0.85) 0%, rgb(105, 108, 78, 0.85) 100%); transition: height 0.5s ease; overflow: hidden; z-index: 2; border-radius: var(--radius); }
+        .hero-image-wrapper:hover .hero-image-overlay { height: 100%; }
+        .hero-image-wrapper:hover img.active { transform: scale(1.05); }
+        .sparkle { position: absolute; font-size: clamp(40px, 8vw, 80px); color: white; animation: sparkle 2s infinite; z-index: 10; }
+        .sparkle-1 { top: 10%; right: 10%; } .sparkle-2 { bottom: 15%; left: 15%; }
+        @keyframes sparkle { 0%,100% { opacity: 0.3; transform: scale(1) rotate(0deg);} 50% { opacity: 1; transform: scale(1.2) rotate(180deg);} }
 
-        .decorative-line::before,
-        .decorative-line::after {
-            content: '◆';
-            position: absolute;
-            background: linear-gradient(135deg, #8B572A, #4a7c7e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-size: 16px;
-            top: -6px;
-            font-weight: bold;
-        }
+        /* Bottom of home section */
+        .bottom-section { padding-block: var(--space-3); display: grid; grid-template-columns: 1fr; gap: var(--space-3); align-items: start; }
+        .contact-card { display: grid; justify-items: center; gap: var(--space-3); }
+        .contact-title { font-size: clamp(24px, 4vw, 32px); font-weight: 900; font-family: 'Cairo', sans-serif; color: var(--brand-dark); text-align: center; margin-bottom: var(--space-2); }
+        .contact-methods { display: grid; gap: var(--space-2); width: 100%; }
+        .contact-item { display: flex; align-items: center; gap: 12px; padding: clamp(12px, 2.5vw, 16px); background: white; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); transition: all 0.3s ease; cursor: pointer; text-decoration: none; color: inherit; }
+        .contact-item:hover { transform: translateX(-5px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); background: linear-gradient(135deg, #f8f8f8 0%, #fff 100%); }
+        .contact-icon { width: clamp(40px, 8vw, 50px); height: clamp(40px, 8vw, 50px); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: clamp(20px, 4vw, 24px); flex-shrink: 0; }
+        .contact-icon.email { background: linear-gradient(135deg, #EA4335 0%, #c23321 100%); }
+        .contact-icon.whatsapp { background: linear-gradient(135deg, #25D366 0%, #1da851 100%); }
+        .contact-icon.phone { background: linear-gradient(135deg, #4a7c7e 0%, #2d5456 100%); }
+        .contact-info { display: flex; flex-direction: column; gap: 2px; }
+        .contact-label { font-size: clamp(11px, 2vw, 13px); color: var(--muted); font-weight: 600; font-family: 'Tajawal', sans-serif; }
+        .contact-value { font-size: clamp(13px, 2.4vw, 14px); font-weight: 700; font-family: 'Cairo', sans-serif; color: var(--ink); direction: ltr; text-align: start; }
+        .registration-info { display: grid; gap: var(--space-2); width: 100%; margin-top: var(--space-2); padding-top: var(--space-2); border-top: 2px dashed rgba(0,0,0,0.1); }
+        .registration-item { display: flex; align-items: center; justify-content: space-between; padding: clamp(10px, 2vw, 12px) clamp(14px, 2.5vw, 18px); background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%); border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); }
+        .registration-label { font-size: clamp(12px, 2.2vw, 15px); color: var(--muted); font-weight: 600; font-family: 'Tajawal', sans-serif; }
+        .registration-value { font-size: clamp(13px, 2.4vw, 16px); font-weight: 800; font-family: 'Cairo', sans-serif; color: var(--brand-dark); direction: ltr; }
 
-        .decorative-line::before {
-            right: -25px;
-        }
+        .vertical-divider { width: 100%; height: 2px; background: linear-gradient(to right, transparent, var(--ink), transparent); position: relative; }
+        .vertical-divider::after { content: '✦'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); background: var(--bg); padding: 6px 0; font-size: 16px; }
 
-        .decorative-line::after {
-            left: -25px;
-        }
-
-        /* صورة Hero مع تأثير Hover والانتقال التلقائي */
-        .hero-image {
-            position: relative;
-            min-height: 500px;
-            height: 600px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: linear-gradient(135deg, #f5f5f0 0%, #e8e3dc 100%);
-            border-radius: var(--radius);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .hero-image-wrapper {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            min-height: 500px;
-            overflow: hidden;
-            border-radius: var(--radius);
-        }
-
-        .hero-image-wrapper img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            opacity: 0;
-            transition: transform 0.4s ease, opacity 1s ease;
-        }
-
-        .hero-image-wrapper img.active {
-            opacity: 1;
-            z-index: 1;
-        }
-
-        .hero-image-wrapper img.logo {
-            object-fit: contain;
-            padding: 60px;
-            /*background: white;*/
-        }
-
-        .hero-image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background: linear-gradient(135deg, rgb(105, 108, 78, 0.85) 0%, rgb(105, 108, 78, 0.85) 100%);
-            transition: height 0.5s ease;
-            overflow: hidden;
-            z-index: 2;
-            border-radius: var(--radius);
-        }
-
-        .hero-image-wrapper:hover .hero-image-overlay {
-            height: 100%;
-        }
-
-        .hero-image-wrapper:hover img.active {
-            transform: scale(1.05);
-        }
-
-        .sparkle {
-            position: absolute;
-            font-size: clamp(40px, 8vw, 80px);
-            color: white;
-            animation: sparkle 2s infinite;
-            z-index: 10;
-        }
-        .sparkle-1 { top: 10%; right: 10%; }
-        .sparkle-2 { bottom: 15%; left: 15%; }
-        @keyframes sparkle {
-            0%,100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
-            50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
-        }
-
-        /* أسفل الصفحة الرئيسية */
-        .bottom-section {
-            padding-block: var(--space-3);
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-3);
-            align-items: start;
-        }
-
-        .contact-card {
-            display: grid;
-            justify-items: center;
-            gap: var(--space-3);
-        }
-        .contact-title {
-            font-size: clamp(24px, 4vw, 32px);
-            font-weight: 900;
-            font-family: 'Cairo', sans-serif;
-            color: var(--brand-dark);
-            text-align: center;
-            margin-bottom: var(--space-2);
-        }
-        .contact-methods {
-            display: grid;
-            gap: var(--space-2);
-            width: 100%;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: clamp(12px, 2.5vw, 16px);
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-        }
-        .contact-item:hover {
-            transform: translateX(-5px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            background: linear-gradient(135deg, #f8f8f8 0%, #fff 100%);
-        }
-        .contact-icon {
-            width: clamp(40px, 8vw, 50px);
-            height: clamp(40px, 8vw, 50px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(20px, 4vw, 24px);
-            flex-shrink: 0;
-        }
-        .contact-icon.email {
-            background: linear-gradient(135deg, #EA4335 0%, #c23321 100%);
-        }
-        .contact-icon.whatsapp {
-            background: linear-gradient(135deg, #25D366 0%, #1da851 100%);
-        }
-        .contact-icon.phone {
-            background: linear-gradient(135deg, #4a7c7e 0%, #2d5456 100%);
-        }
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .contact-label {
-            font-size: clamp(11px, 2vw, 13px);
-            color: var(--muted);
-            font-weight: 600;
-            font-family: 'Tajawal', sans-serif;
-        }
-        .contact-value {
-            font-size: clamp(13px, 2.4vw, 14px);
-            font-weight: 700;
-            font-family: 'Cairo', sans-serif;
-            color: var(--ink);
-            direction: ltr;
-            text-align: start;
-        }
-        .registration-info {
-            display: grid;
-            gap: var(--space-2);
-            width: 100%;
-            margin-top: var(--space-2);
-            padding-top: var(--space-2);
-            border-top: 2px dashed rgba(0,0,0,0.1);
-        }
-        .registration-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: clamp(10px, 2vw, 12px) clamp(14px, 2.5vw, 18px);
-            background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
-            border-radius: 8px;
-            border: 1px solid rgba(0,0,0,0.06);
-        }
-        .registration-label {
-            font-size: clamp(12px, 2.2vw, 15px);
-            color: var(--muted);
-            font-weight: 600;
-            font-family: 'Tajawal', sans-serif;
-        }
-        .registration-value {
-            font-size: clamp(13px, 2.4vw, 16px);
-            font-weight: 800;
-            font-family: 'Cairo', sans-serif;
-            color: var(--brand-dark);
-            direction: ltr;
-        }
-
-        .vertical-divider {
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--ink), transparent);
-            position: relative;
-        }
-        .vertical-divider::after {
-            content: '✦';
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--bg);
-            padding: 6px 0;
-            font-size: 16px;
-        }
-
-        .about-text {
-            font-size: clamp(14px, 2.4vw, 18px);
-            line-height: 1.9;
-            color: #444;
-            max-width: 70ch;
-            font-family: 'Tajawal', sans-serif;
-        }
+        .about-text { font-size: clamp(14px, 2.4vw, 18px); line-height: 1.9; color: #444; max-width: 70ch; font-family: 'Tajawal', sans-serif; }
         .about-text strong { color: #2d3e50; }
 
-        /* المحتوى العام */
-        .content-section {
-            padding-block: clamp(32px, 6vw, 80px);
-            padding-inline: clamp(14px, 3.5vw, 80px);
-            min-height: 40vh;
-        }
-        .content-section h2 {
-            font-size: clamp(24px, 5.2vw, 48px);
-            margin-bottom: var(--space-3);
-            color: #696c4e;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 800;
-        }
-        .content-section p {
-            font-size: clamp(14px, 2.4vw, 18px);
-            line-height: 1.9;
-            color: #444;
-            margin-bottom: var(--space-2);
-            font-family: 'Tajawal', sans-serif;
-        }
-        .grid-items {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-3);
-            margin-top: var(--space-3);
-        }
-        .item-card {
-            background: var(--card);
-            padding: var(--space-3);
-            border-radius: var(--radius);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+        /* Generic content */
+        .content-section { padding-block: clamp(32px, 6vw, 80px); padding-inline: clamp(14px, 3.5vw, 80px); min-height: 40vh; }
+        .content-section h2 { font-size: clamp(24px, 5.2vw, 48px); margin-bottom: var(--space-3); color: #696c4e; font-family: 'Cairo', sans-serif; font-weight: 800; }
+        .content-section p { font-size: clamp(14px, 2.4vw, 18px); line-height: 1.9; color: #444; margin-bottom: var(--space-2); font-family: 'Tajawal', sans-serif; }
+        .grid-items { display: grid; grid-template-columns: 1fr; gap: var(--space-3); margin-top: var(--space-3); }
+        .item-card { background: var(--card); padding: var(--space-3); border-radius: var(--radius); box-shadow: 0 5px 20px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s; }
         .item-card:hover { transform: translateY(-6px); box-shadow: 0 10px 28px rgba(0,0,0,0.14); }
-        .item-card h3 { 
-            color: var(--brand); 
-            margin-bottom: 10px; 
-            font-size: clamp(18px, 3.2vw, 24px);
-            font-family: 'Cairo', sans-serif;
-            font-weight: 700;
-        }
-
-        /* تصميم Brand Identity Prism - عرض الصورة المحسّن */
-        .prism-image-container {
-            width: 100%;
-            margin: 0;
-            padding: clamp(40px, 5vw, 60px) clamp(20px, 4vw, 60px);
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            gap: clamp(35px, 5vw, 50px);
-        }
-
-        /* خلفية زخرفية */
-        .prism-image-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(74, 124, 126, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(139, 87, 42, 0.03) 0%, transparent 50%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .prism-image-title {
-            text-align: center;
-            font-size: clamp(48px, 9vw, 80px);
-            font-weight: 900;
-            color: var(--brand-dark);
-            margin-bottom: clamp(15px, 2vw, 20px);
-            font-family: 'Cairo', sans-serif;
-            letter-spacing: 2px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .prism-image-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--brand), var(--accent));
-            border-radius: 3px;
-        }
-
-        .prism-subtitle {
-            text-align: center;
-            font-size: clamp(18px, 3.2vw, 26px);
-            color: #444;
-            font-weight: 500;
-            max-width: 900px;
-            margin: 0 auto clamp(30px, 4vw, 45px);
-            line-height: 2;
-            font-family: 'Tajawal', sans-serif;
-            position: relative;
-            z-index: 2;
-        }
-
-        .prism-image-wrapper {
-            width: 100%;
-            max-width: 1400px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: clamp(20px, 4vw, 40px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            z-index: 2;
-            overflow: hidden;
-        }
-
-        .prism-image-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--brand), var(--accent), var(--brand-dark));
-            background-size: 200% 100%;
-            animation: gradientShift 3s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .prism-image-wrapper:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
-        }
-
-        .prism-main-image {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-            object-fit: contain;
-            transition: transform 0.4s ease;
-        }
-
-        .prism-image-wrapper:hover .prism-main-image {
-            transform: scale(1.02);
-        }
-
-        /* عناصر زخرفية */
-        .decorative-corner {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border: 3px solid var(--brand);
-            opacity: 0.3;
-            z-index: 1;
-        }
-
-        .decorative-corner.top-left {
-            top: 20px;
-            left: 20px;
-            border-right: none;
-            border-bottom: none;
-            border-radius: 8px 0 0 0;
-        }
-
-        .decorative-corner.top-right {
-            top: 20px;
-            right: 20px;
-            border-left: none;
-            border-bottom: none;
-            border-radius: 0 8px 0 0;
-        }
-
-        .decorative-corner.bottom-left {
-            bottom: 20px;
-            left: 20px;
-            border-right: none;
-            border-top: none;
-            border-radius: 0 0 0 8px;
-        }
-
-        .decorative-corner.bottom-right {
-            bottom: 20px;
-            right: 20px;
-            border-left: none;
-            border-top: none;
-            border-radius: 0 0 8px 0;
-        }
-
-        /* شريط معلومات تحت الصورة */
-        .prism-image-caption {
-            text-align: center;
-            font-size: clamp(16px, 2.6vw, 22px);
-            color: #333;
-            font-weight: 500;
-            font-family: 'Tajawal', sans-serif;
-            margin-top: 20px;
-            padding: 18px 30px;
-            background: linear-gradient(135deg, rgba(74, 124, 126, 0.08) 0%, rgba(139, 87, 42, 0.08) 100%);
-            border-radius: 12px;
-            border-right: 5px solid var(--brand);
-            line-height: 1.8;
-        }
-
-        .prism-image-caption strong {
-            color: var(--brand-dark);
-            font-weight: 900;
-            font-family: 'Cairo', sans-serif;
-            font-size: 1.1em;
-        }
-
-        /* تصاميم خاصة */
-        .designs-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-4);
-            margin-top: var(--space-4);
-        }
-
-        .design-card {
-            background: var(--card);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .design-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-
-        .design-image-wrapper {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #f5f5f0 0%, #e8e3dc 100%);
-        }
-
-        .design-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .design-card:hover .design-image-wrapper img {
-            transform: scale(1.1);
-        }
-
-        .design-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-            padding: var(--space-4);
-            transform: translateY(0);
-            transition: transform 0.3s ease;
-        }
-
-        .design-title {
-            font-size: clamp(24px, 4vw, 36px);
-            font-weight: 800;
-            font-family: 'Cairo', sans-serif;
-            color: white;
-            text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .design-icon {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: clamp(40px, 6vw, 60px);
-            opacity: 0.9;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
-        }
-
-        /* المشاريع - تصميم جديد */
-        .projects-new-container {
-            width: 100%;
-            padding: clamp(50px, 8vw, 100px) clamp(20px, 4vw, 60px);
-            background: var(--bg);
-            min-height: 100vh;
-        }
-
-        .projects-new-header {
-            text-align: center;
-            margin-bottom: clamp(50px, 8vw, 80px);
-        }
-
-        .projects-new-header h2 {
-            font-size: clamp(36px, 7vw, 64px);
-            font-weight: 900;
-            color: var(--brand-dark);
-            margin-bottom: var(--space-3);
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .projects-new-header p {
-            font-size: clamp(16px, 2.6vw, 20px);
-            color: var(--muted);
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        .projects-masonry {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: clamp(20px, 3vw, 30px);
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .project-card {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            background: white;
-        }
-
-        .project-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-        }
-
-        .project-card:nth-child(1) { grid-row: span 2; }
-        .project-card:nth-child(4) { grid-row: span 2; }
-
-        .project-card-image {
-            width: 100%;
-            height: 100%;
-            min-height: 300px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .project-card:hover .project-card-image img {
-            transform: scale(1.15) rotate(2deg);
-        }
-
-        .project-card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-            padding: clamp(20px, 4vw, 35px);
-            transform: translateY(0);
-            transition: all 0.4s ease;
-        }
-
-        .project-card:hover .project-card-overlay {
-            background: linear-gradient(to top, rgba(105, 108, 78, 0.95) 0%, rgba(105, 108, 78, 0.85) 100%);
-        }
-
-        .project-card-category {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            font-size: clamp(11px, 1.8vw, 13px);
-            color: white;
-            font-weight: 600;
-            margin-bottom: 12px;
-            font-family: 'Cairo', sans-serif;
-            backdrop-filter: blur(10px);
-        }
-
-        .project-card-title {
-            font-size: clamp(20px, 3.5vw, 28px);
-            font-weight: 800;
-            color: white;
-            margin-bottom: 8px;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .project-card-desc {
-            font-size: clamp(13px, 2vw, 15px);
-            color: rgba(255,255,255,0.9);
-            line-height: 1.6;
-            font-family: 'Tajawal', sans-serif;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-
-        .project-card:hover .project-card-desc {
-            max-height: 200px;
-            opacity: 1;
-            margin-top: 12px;
-        }
-
-        .project-card-icon {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-card-icon {
-            transform: rotate(360deg) scale(1.1);
-            background: #696c4e;
-        }
-
-        .about-section {
-            text-align: center;
-        }
-
-        .partners-title {
-            font-size: clamp(28px, 5vw, 38px);
-            font-weight: 900;
-            font-family: 'Cairo', sans-serif;
-            color: #814a1f;
-            margin-bottom: 20px;
-        }
-
-        .partners-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .partners-image img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
-        }
-
-        /* تصميم صفحة رؤيتنا - معماري محسّن */
-        .vision-container {
-            width: 100%;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f5f5f0 0%, #e8e3dc 100%);
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* خلفية معمارية بنمط Blueprint */
-        .vision-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(90deg, rgba(74, 124, 126, 0.05) 1px, transparent 1px),
-                linear-gradient(rgba(74, 124, 126, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 0;
-            opacity: 0.6;
-        }
-
-        /* عنوان الرؤية الجديد */
-        .vision-header-new {
-            text-align: center;
-            padding: clamp(60px, 8vw, 100px) clamp(20px, 4vw, 60px) clamp(40px, 6vw, 60px);
-            position: relative;
-        }
-
-        .vision-header-new h2 {
-            font-size: clamp(42px, 8vw, 72px);
-            font-weight: 900;
-            color: var(--brand-dark);
-            margin-bottom: var(--space-3);
-            font-family: 'Cairo', sans-serif;
-            position: relative;
-            display: inline-block;
-        }
-
-        .vision-header-new h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--brand), var(--accent));
-            border-radius: 3px;
-        }
-
-        .vision-header-new p {
-            font-size: clamp(16px, 2.8vw, 22px);
-            color: var(--muted);
-            max-width: 900px;
-            margin: var(--space-4) auto 0;
-            line-height: 1.9;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        /* محتوى الرؤية */
-        .vision-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 clamp(20px, 4vw, 60px) clamp(60px, 10vw, 100px);
-        }
-
-        /* بطاقات الرؤية */
-        .vision-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: clamp(30px, 5vw, 50px);
-        }
-
-        .vision-card {
-            background: white;
-            border-radius: 20px;
-            padding: clamp(35px, 6vw, 50px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-            border-top: 5px solid transparent;
-        }
-
-        .vision-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--brand), var(--accent));
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s ease;
-        }
-
-        .vision-card:hover::before {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .vision-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-        }
-
-        .vision-card-icon {
-            width: 80px;
-            height: 80px;
-            background: #696c4e;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(74, 124, 126, 0.3);
-            transition: all 0.4s ease;
-        }
-
-        .vision-card:hover .vision-card-icon {
-            transform: rotateY(360deg);
-            box-shadow: 0 15px 35px rgba(74, 124, 126, 0.5);
-        }
-
-        .vision-card-title {
-            font-size: clamp(22px, 4vw, 30px);
-            font-weight: 800;
-            color: var(--ink);
-            margin-bottom: 18px;
-            font-family: 'Cairo', sans-serif;
-            line-height: 1.3;
-        }
-
-        .vision-card-desc {
-            font-size: clamp(15px, 2.4vw, 18px);
-            color: var(--muted);
-            line-height: 1.9;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        /* قسم الاقتباس */
-        .vision-quote-section {
-            padding: clamp(80px, 12vw, 120px) clamp(20px, 4vw, 60px);
-            background: white;
-            position: relative;
-        }
-
-        .vision-quote-wrapper {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-        }
-
-        .vision-quote-mark {
-            font-size: clamp(80px, 15vw, 150px);
-            color: var(--brand);
-            opacity: 0.2;
-            font-family: 'Georgia', serif;
-            line-height: 0.8;
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .vision-quote-text {
-            font-size: clamp(20px, 4vw, 32px);
-            color: var(--ink);
-            line-height: 1.8;
-            font-family: 'Amiri', serif;
-            font-weight: 700;
-            font-style: italic;
-            position: relative;
-            z-index: 2;
-            padding-top: 40px;
-        }
-
-        .vision-quote-author {
-            font-size: clamp(16px, 2.8vw, 22px);
-            color: #696c4e;
-            font-family: 'Cairo', sans-serif;
-            font-weight: 700;
-            margin-top: 30px;
-        }
-
-        /* تصميم صفحة فريقنا */
-        .team-container {
-            width: 100%;
-            padding: clamp(40px, 6vw, 80px) clamp(20px, 4vw, 60px);
-            background: var(--bg);
-        }
-
-        .team-header {
-            text-align: center;
-            margin-bottom: clamp(40px, 6vw, 60px);
-        }
-
-        .team-header h2 {
-            font-size: clamp(32px, 6vw, 56px);
-            font-weight: 900;
-            color: var(--brand-dark);
-            margin-bottom: var(--space-2);
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .team-header p {
-            font-size: clamp(14px, 2.4vw, 18px);
-            color: var(--muted);
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: clamp(24px, 4vw, 40px);
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .team-member {
-            position: relative;
-            background: white;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-
-        .team-member:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
-        }
-
-        .team-member-image {
-            width: 100%;
-            height: 350px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .team-member-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
-        }
-
-        .team-member:hover .team-member-image img {
-            transform: scale(1.1);
-        }
-
-        .team-member-info {
-            padding: clamp(16px, 3vw, 24px);
-            text-align: center;
-        }
-
-        .team-member-name {
-            font-size: clamp(18px, 3vw, 24px);
-            font-weight: 800;
-            color: var(--ink);
-            margin-bottom: 8px;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .team-member-position {
-            font-size: clamp(14px, 2.2vw, 16px);
-            color: var(--brand);
-            font-weight: 600;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        .team-member-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(105, 108, 78, 0.95) 0%, rgba(105, 108, 78, 0.85) 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: clamp(20px, 4vw, 30px);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            color: white;
-            text-align: center;
-        }
-
-        .team-member:hover .team-member-overlay {
-            opacity: 1;
-        }
-
-        .team-member-overlay h3 {
-            font-size: clamp(20px, 3.5vw, 28px);
-            font-weight: 800;
-            margin-bottom: 12px;
-            text-align: center;
-            font-family: 'Cairo', sans-serif;
-        }
-
-        .team-member-overlay h4 {
-            font-size: clamp(14px, 2.4vw, 18px);
-            font-weight: 600;
-            margin-bottom: 16px;
-            text-align: center;
-            opacity: 0.9;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        .team-member-overlay p {
-            font-size: clamp(12px, 2vw, 15px);
-            line-height: 1.8;
-            text-align: center;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        .team-member-social {
-            display: flex;
-            gap: 12px;
-            margin-top: 16px;
-        }
-
-        .social-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            transition: background 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background: rgba(255,255,255,0.4);
-        }
-
-        /* نقاط التوقف */
+        .item-card h3 { color: var(--brand); margin-bottom: 10px; font-size: clamp(18px, 3.2vw, 24px); font-family: 'Cairo', sans-serif; font-weight: 700; }
+
+        /* Brand Identity Prism - improved image view */
+        .prism-image-container { width: 100%; margin: 0; padding: clamp(40px, 5vw, 60px) clamp(20px, 4vw, 60px); position: relative; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: clamp(35px, 5vw, 50px); }
+        .prism-image-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(circle at 20% 50%, rgba(74, 124, 126, 0.03) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139, 87, 42, 0.03) 0%, transparent 50%); z-index: 0; pointer-events: none; }
+        .prism-image-title { text-align: center; font-size: clamp(48px, 9vw, 80px); font-weight: 900; color: var(--brand-dark); margin-bottom: clamp(15px, 2vw, 20px); font-family: 'Cairo', sans-serif; letter-spacing: 2px; position: relative; z-index: 2; }
+        .prism-image-title::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 150px; height: 5px; background: linear-gradient(90deg, var(--brand), var(--accent)); border-radius: 3px; }
+        .prism-subtitle { text-align: center; font-size: clamp(18px, 3.2vw, 26px); color: #444; font-weight: 500; max-width: 900px; margin: 0 auto clamp(30px, 4vw, 45px); line-height: 2; font-family: 'Tajawal', sans-serif; position: relative; z-index: 2; }
+        .prism-image-wrapper { width: 100%; max-width: 1400px; margin: 0 auto; background: white; border-radius: 20px; padding: clamp(20px, 4vw, 40px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); transition: all 0.4s ease; position: relative; z-index: 2; overflow: hidden; }
+        .prism-image-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--brand), var(--accent), var(--brand-dark)); background-size: 200% 100%; animation: gradientShift 3s ease infinite; }
+        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .prism-image-wrapper:hover { transform: translateY(-10px); box-shadow: 0 30px 80px rgba(0,0,0,0.15); }
+        .prism-main-image { width: 100%; height: auto; display: block; border-radius: 12px; object-fit: contain; transition: transform 0.4s ease; }
+        .prism-image-wrapper:hover .prism-main-image { transform: scale(1.02); }
+        .decorative-corner { position: absolute; width: 60px; height: 60px; border: 3px solid var(--brand); opacity: 0.3; z-index: 1; }
+        .decorative-corner.top-left { top: 20px; left: 20px; border-right: none; border-bottom: none; border-radius: 8px 0 0 0; }
+        .decorative-corner.top-right { top: 20px; right: 20px; border-left: none; border-bottom: none; border-radius: 0 8px 0 0; }
+        .decorative-corner.bottom-left { bottom: 20px; left: 20px; border-right: none; border-top: none; border-radius: 0 0 0 8px; }
+        .decorative-corner.bottom-right { bottom: 20px; right: 20px; border-left: none; border-top: none; border-radius: 0 0 8px 0; }
+        .prism-image-caption { text-align: center; font-size: clamp(16px, 2.6vw, 22px); color: #333; font-weight: 500; font-family: 'Tajawal', sans-serif; margin-top: 20px; padding: 18px 30px; background: linear-gradient(135deg, rgba(74, 124, 126, 0.08) 0%, rgba(139, 87, 42, 0.08) 100%); border-radius: 12px; border-right: 5px solid var(--brand); line-height: 1.8; }
+        .prism-image-caption strong { color: var(--brand-dark); font-weight: 900; font-family: 'Cairo', sans-serif; font-size: 1.1em; }
+
+        /* Special designs */
+        .designs-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin-top: var(--space-4); }
+        .design-card { background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+        .design-card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
+        .design-image-wrapper { position: relative; width: 100%; height: 400px; overflow: hidden; background: linear-gradient(135deg, #f5f5f0 0%, #e8e3dc 100%); }
+        .design-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .design-card:hover .design-image-wrapper img { transform: scale(1.1); }
+        .design-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); padding: var(--space-4); transform: translateY(0); transition: transform 0.3s ease; }
+        .design-title { font-size: clamp(24px, 4vw, 36px); font-weight: 800; font-family: 'Cairo', sans-serif; color: white; text-align: center; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .design-icon { position: absolute; top: 20px; right: 20px; font-size: clamp(40px, 6vw, 60px); opacity: 0.9; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)); }
+
+        /* Projects - new design */
+        .projects-new-container { width: 100%; padding: clamp(50px, 8vw, 100px) clamp(20px, 4vw, 60px); background: var(--bg); min-height: 100vh; }
+        .projects-new-header { text-align: center; margin-bottom: clamp(50px, 8vw, 80px); }
+        .projects-new-header h2 { font-size: clamp(36px, 7vw, 64px); font-weight: 900; color: var(--brand-dark); margin-bottom: var(--space-3); font-family: 'Cairo', sans-serif; }
+        .projects-new-header p { font-size: clamp(16px, 2.6vw, 20px); color: var(--muted); font-family: 'Tajawal', sans-serif; }
+        .projects-masonry { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(20px, 3vw, 30px); max-width: 1400px; margin: 0 auto; }
+        .project-card { position: relative; border-radius: 16px; overflow: hidden; cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease; background: white; }
+        .project-card:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+        .project-card:nth-child(1) { grid-row: span 2; } .project-card:nth-child(4) { grid-row: span 2; }
+        .project-card-image { width: 100%; height: 100%; min-height: 300px; position: relative; overflow: hidden; }
+        .project-card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .project-card:hover .project-card-image img { transform: scale(1.15) rotate(2deg); }
+        .project-card-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%); padding: clamp(20px, 4vw, 35px); transform: translateY(0); transition: all 0.4s ease; }
+        .project-card:hover .project-card-overlay { background: linear-gradient(to top, rgba(105, 108, 78, 0.95) 0%, rgba(105, 108, 78, 0.85) 100%); }
+        .project-card-category { display: inline-block; padding: 6px 14px; background: rgba(255,255,255,0.2); border-radius: 20px; font-size: clamp(11px, 1.8vw, 13px); color: white; font-weight: 600; margin-bottom: 12px; font-family: 'Cairo', sans-serif; backdrop-filter: blur(10px); }
+        .project-card-title { font-size: clamp(20px, 3.5vw, 28px); font-weight: 800; color: white; margin-bottom: 8px; font-family: 'Cairo', sans-serif; }
+        .project-card-desc { font-size: clamp(13px, 2vw, 15px); color: rgba(255,255,255,0.9); line-height: 1.6; font-family: 'Tajawal', sans-serif; max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s ease; }
+        .project-card:hover .project-card-desc { max-height: 200px; opacity: 1; margin-top: 12px; }
+        .project-card-icon { position: absolute; top: 20px; right: 20px; width: 50px; height: 50px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: all 0.3s ease; }
+        .project-card:hover .project-card-icon { transform: rotate(360deg) scale(1.1); background: #696c4e; }
+
+        .about-section { text-align: center; }
+        .partners-title { font-size: clamp(28px, 5vw, 38px); font-weight: 900; font-family: 'Cairo', sans-serif; color: #814a1f; margin-bottom: 20px; }
+        .partners-image img { max-width: 100%; height: auto; border-radius: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .partners-image img:hover { transform: scale(1.03); box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25); }
+
+        /* Vision page - architectural styling */
+        .vision-container { width: 100%; min-height: 100vh; background: linear-gradient(135deg, #f5f5f0 0%, #e8e3dc 100%); padding: 0; position: relative; overflow: hidden; }
+        /* Architectural blueprint background */
+        .vision-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(90deg, rgba(74, 124, 126, 0.05) 1px, transparent 1px), linear-gradient(rgba(74, 124, 126, 0.05) 1px, transparent 1px); background-size: 40px 40px; z-index: 0; opacity: 0.6; }
+        /* New vision header */
+        .vision-header-new { text-align: center; padding: clamp(60px, 8vw, 100px) clamp(20px, 4vw, 60px) clamp(40px, 6vw, 60px); position: relative; }
+        .vision-header-new h2 { font-size: clamp(42px, 8vw, 72px); font-weight: 900; color: var(--brand-dark); margin-bottom: var(--space-3); font-family: 'Cairo', sans-serif; position: relative; display: inline-block; }
+        .vision-header-new h2::after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 120px; height: 5px; background: linear-gradient(90deg, var(--brand), var(--accent)); border-radius: 3px; }
+        .vision-header-new p { font-size: clamp(16px, 2.8vw, 22px); color: var(--muted); max-width: 900px; margin: var(--space-4) auto 0; line-height: 1.9; font-family: 'Tajawal', sans-serif; }
+        /* Vision content */
+        .vision-content { position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px) clamp(60px, 10vw, 100px); }
+        /* Vision cards */
+        .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(30px, 5vw, 50px); }
+        .vision-card { background: white; border-radius: 20px; padding: clamp(35px, 6vw, 50px); box-shadow: 0 10px 40px rgba(0,0,0,0.08); transition: all 0.4s ease; position: relative; overflow: hidden; border-top: 5px solid transparent; }
+        .vision-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--brand), var(--accent)); transform: scaleX(0); transform-origin: right; transition: transform 0.4s ease; }
+        .vision-card:hover::before { transform: scaleX(1); transform-origin: left; }
+        .vision-card:hover { transform: translateY(-15px); box-shadow: 0 25px 60px rgba(0,0,0,0.15); }
+        .vision-card-icon { width: 80px; height: 80px; background: #696c4e; border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(74, 124, 126, 0.3); transition: all 0.4s ease; }
+        .vision-card:hover .vision-card-icon { transform: rotateY(360deg); box-shadow: 0 15px 35px rgba(74, 124, 126, 0.5); }
+        .vision-card-title { font-size: clamp(22px, 4vw, 30px); font-weight: 800; color: var(--ink); margin-bottom: 18px; font-family: 'Cairo', sans-serif; line-height: 1.3; }
+        .vision-card-desc { font-size: clamp(15px, 2.4vw, 18px); color: var(--muted); line-height: 1.9; font-family: 'Tajawal', sans-serif; }
+        /* Quote section */
+        .vision-quote-section { padding: clamp(80px, 12vw, 120px) clamp(20px, 4vw, 60px); background: white; position: relative; }
+        .vision-quote-wrapper { max-width: 1000px; margin: 0 auto; text-align: center; position: relative; }
+        .vision-quote-mark { font-size: clamp(80px, 15vw, 150px); color: var(--brand); opacity: 0.2; font-family: 'Georgia', serif; line-height: 0.8; position: absolute; top: -40px; left: 50%; transform: translateX(-50%); }
+        .vision-quote-text { font-size: clamp(20px, 4vw, 32px); color: var(--ink); line-height: 1.8; font-family: 'Amiri', serif; font-weight: 700; font-style: italic; position: relative; z-index: 2; padding-top: 40px; }
+        .vision-quote-author { font-size: clamp(16px, 2.8vw, 22px); color: #696c4e; font-family: 'Cairo', sans-serif; font-weight: 700; margin-top: 30px; }
+
+        /* Team page */
+        .team-container { width: 100%; padding: clamp(40px, 6vw, 80px) clamp(20px, 4vw, 60px); background: var(--bg); }
+        .team-header { text-align: center; margin-bottom: clamp(40px, 6vw, 60px); }
+        .team-header h2 { font-size: clamp(32px, 6vw, 56px); font-weight: 900; color: var(--brand-dark); margin-bottom: var(--space-2); font-family: 'Cairo', sans-serif; }
+        .team-header p { font-size: clamp(14px, 2.4vw, 18px); color: var(--muted); font-family: 'Tajawal', sans-serif; }
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(24px, 4vw, 40px); max-width: 1400px; margin: 0 auto; }
+        .team-member { position: relative; background: white; border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+        .team-member:hover { transform: translateY(-8px); box-shadow: 0 12px 35px rgba(0,0,0,0.15); }
+        .team-member-image { width: 100%; height: 350px; overflow: hidden; position: relative; }
+        .team-member-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+        .team-member:hover .team-member-image img { transform: scale(1.1); }
+        .team-member-info { padding: clamp(16px, 3vw, 24px); text-align: center; }
+        .team-member-name { font-size: clamp(18px, 3vw, 24px); font-weight: 800; color: var(--ink); margin-bottom: 8px; font-family: 'Cairo', sans-serif; }
+        .team-member-position { font-size: clamp(14px, 2.2vw, 16px); color: var(--brand); font-weight: 600; font-family: 'Tajawal', sans-serif; }
+        .team-member-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(105, 108, 78, 0.95) 0%, rgba(105, 108, 78, 0.85) 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: clamp(20px, 4vw, 30px); opacity: 0; transition: opacity 0.4s ease; color: white; text-align: center; }
+        .team-member:hover .team-member-overlay { opacity: 1; }
+        .team-member-overlay h3 { font-size: clamp(20px, 3.5vw, 28px); font-weight: 800; margin-bottom: 12px; text-align: center; font-family: 'Cairo', sans-serif; }
+        .team-member-overlay h4 { font-size: clamp(14px, 2.4vw, 18px); font-weight: 600; margin-bottom: 16px; text-align: center; opacity: 0.9; font-family: 'Tajawal', sans-serif; }
+        .team-member-overlay p { font-size: clamp(12px, 2vw, 15px); line-height: 1.8; text-align: center; font-family: 'Tajawal', sans-serif; }
+        .team-member-social { display: flex; gap: 12px; margin-top: 16px; }
+        .social-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 16px; transition: background 0.3s ease; }
+        .social-icon:hover { background: rgba(255,255,255,0.4); }
+
+        /* Breakpoints */
         @media (min-width: 700px) {
-            .grid-items {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-            .bottom-section {
-                grid-template-columns: 280px 2px 1fr;
-                align-items: center;
-            }
-            .vertical-divider {
-                width: 2px; height: 100%;
-                background: linear-gradient(to bottom, transparent, var(--ink), transparent);
-            }
-            .vertical-divider::after {
-                background: var(--bg);
-            }
-            .designs-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .grid-items { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .bottom-section { grid-template-columns: 280px 2px 1fr; align-items: center; }
+            .vertical-divider { width: 2px; height: 100%; background: linear-gradient(to bottom, transparent, var(--ink), transparent); }
+            .vertical-divider::after { background: var(--bg); }
+            .designs-grid { grid-template-columns: repeat(2, 1fr); }
         }
-
         @media (min-width: 900px) {
-            .hero-section {
-                grid-template-columns: 1fr 1fr;
-                align-items: center;
-            }
+            .hero-section { grid-template-columns: 1fr 1fr; align-items: center; }
         }
+        @media (min-width: 1200px) { .designs-grid { grid-template-columns: repeat(3, 1fr); } }
 
-        @media (min-width: 1200px) {
-            .designs-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* قائمة الموبايل */
+        /* Mobile menu */
         @media (max-width: 900px) {
-            .header-inner {
-                grid-template-columns: auto 1fr auto auto;
-            }
-
-            .menu-toggle { 
-                display: inline-block;
-                position: relative;
-                z-index: 101;
-            }
-            
-            .logo {
-                justify-self: start;
-                margin-inline-start: 70px;
-            }
-            
-            .connect-btn {
-                overflow: hidden;
-            }
-            
+            .header-inner { grid-template-columns: auto 1fr auto auto; }
+            .menu-toggle { display: inline-block; position: relative; z-index: 101; }
+            .logo { justify-self: start; margin-inline-start: 70px; }
+            .connect-btn { overflow: hidden; }
             nav {
-                position: absolute;
-                right: 0;
-                top: calc(100% + 0px);
-                background: var(--bg);
-                border: 1px solid rgba(0,0,0,0.1);
-                border-radius: 8px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                display: grid;
-                gap: 8px;
-                padding: 12px 16px;
-                transform-origin: top right;
-                transform: scaleY(0);
-                opacity: 0;
-                pointer-events: none;
-                transition: transform 0.2s, opacity 0.2s;
-                min-width: 200px;
+                position: absolute; right: 0; top: calc(100% + 0px); background: var(--bg);
+                border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                display: grid; gap: 8px; padding: 12px 16px; transform-origin: top right; transform: scaleY(0);
+                opacity: 0; pointer-events: none; transition: transform 0.2s, opacity 0.2s; min-width: 200px;
             }
-         
-            nav.open {
-                transform: scaleY(1);
-                opacity: 1;
-                pointer-events: auto;
-            }
-            /* ضع مبدل اللغة داخل قائمة الهاتف */
+            nav.open { transform: scaleY(1); opacity: 1; pointer-events: auto; }
+            /* Place the language switcher inside the mobile menu */
             nav .language-switcher,
             .language-switcher.in-nav {
-                width: 100%;
-                margin-top: 8px;
-                padding-top: 8px;
-                border-top: 1px solid rgba(0,0,0,0.08);
+                width: 100%; margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(0,0,0,0.08);
             }
-            nav .language-btn {
-                width: 100%;
-                justify-content: center;
-            }
-            nav .language-dropdown {
-                position: static;
-                right: auto;
-                top: auto;
-                transform: none;
-                width: 100%;
-                min-width: 0;
-                box-shadow: none;
-                margin-top: 8px;
-                opacity: 0;
-                visibility: hidden;
-                max-height: 0;
-                transition: max-height 0.3s ease, opacity 0.3s ease;
-            }
-            nav .language-dropdown.active {
-                opacity: 1;
-                visibility: visible;
-                max-height: 300px;
-            }
-            
-            .nav-item.active::after {
-                inset-inline-start: auto;
-                inset-inline-end: -1.2ch;
-            }
-
-            .language-switcher {
-                order: 3;
-            }
-
-            .connect-btn {
-                order: 4;
-            }
+            nav .language-btn { width: 100%; justify-content: center; }
+            nav .language-dropdown { position: static; right: auto; top: auto; transform: none; width: 100%; min-width: 0; box-shadow: none; margin-top: 8px; opacity: 0; visibility: hidden; max-height: 0; transition: max-height 0.3s ease, opacity 0.3s ease; }
+            nav .language-dropdown.active { opacity: 1; visibility: visible; max-height: 300px; }
+            .nav-item.active::after { inset-inline-start: auto; inset-inline-end: -1.2ch; }
+            .language-switcher { order: 3; }
+            .connect-btn { order: 4; }
         }
 
         @media (max-width: 768px) {
-            .connect-btn {
-                display: none !important;
-            }
-            
-            .partners-title {
-                font-size: 24px;
-            }
-            
-            .vision-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-            
-            .team-member-image {
-                height: 300px;
-            }
-
-            .projects-masonry {
-                grid-template-columns: 1fr;
-            }
-            
-            .project-card:nth-child(1),
-            .project-card:nth-child(4) {
-                grid-row: span 1;
-            }
+            .connect-btn { display: none !important; }
+            .partners-title { font-size: 24px; }
+            .vision-grid { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+            .team-member-image { height: 300px; }
+            .projects-masonry { grid-template-columns: 1fr; }
+            .project-card:nth-child(1), .project-card:nth-child(4) { grid-row: span 1; }
         }
 
-        /* تحسينات لمس */
-        @media (hover: none) {
-            .nav-item, .connect-btn { padding: 12px; }
-        }
-        .header-actions {
-                gap: 8px;
-            }
-            .header-actions {
-            display: flex;
-            gap: clamp(12px, 2vw, 18px);
-            align-items: center;
-        }
-        
-        .header-icon-link {
-            width: clamp(40px, 6vw, 50px);
-            height: clamp(40px, 6vw, 50px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: clamp(18px, 3vw, 22px);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
+        /* Touch improvements */
+        @media (hover: none) { .nav-item, .connect-btn { padding: 12px; } }
 
-        .header-icon-link.instagram {
-            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-            color: white;
-        }
+        .header-actions { gap: 8px; }
+        .header-actions { display: flex; gap: clamp(12px, 2vw, 18px); align-items: center; }
 
-        .header-icon-link.instagram:hover {
-            transform: translateY(-3px) rotate(5deg);
-            box-shadow: 0 8px 20px rgba(188, 24, 136, 0.4);
-        }
+        .header-icon-link { width: clamp(40px, 6vw, 50px); height: clamp(40px, 6vw, 50px); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: clamp(18px, 3vw, 22px); transition: all 0.3s ease; text-decoration: none; cursor: pointer; border: 2px solid transparent; }
+        .header-icon-link.instagram { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color: white; }
+        .header-icon-link.instagram:hover { transform: translateY(-3px) rotate(5deg); box-shadow: 0 8px 20px rgba(188, 24, 136, 0.4); }
+        .header-icon-link.location { background: linear-gradient(135deg, #696c4e 0%, #696c4e 100%); color: white; }
+        .header-icon-link.location:hover { transform: translateY(-3px); box-shadow: 0 8px 20px #696c4e; }
+        .header-icon-link.phone { background: linear-gradient(135deg, #25D366 0%, #1da851 100%); color: white; }
+        .header-icon-link.phone:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4); animation: shake 0.5s ease; }
 
-        .header-icon-link.location {
-            background: linear-gradient(135deg, #696c4e 0%, #696c4e 100%);
-            color: white;
-        }
+        /* Zoomable images for lightbox */
+        .project-card-image img,
+        .design-image-wrapper img,
+        .prism-main-image { cursor: zoom-in; }
 
-        .header-icon-link.location:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px #696c4e;
-        }
+        /* Show team overlay on mobile tap */
+        .team-member.show-overlay .team-member-overlay { opacity: 1; }
 
-        .header-icon-link.phone {
-            background: linear-gradient(135deg, #25D366 0%, #1da851 100%);
-            color: white;
+        /* Lightbox styles */
+        .lightbox-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 1000; padding: 24px; }
+        .lightbox-backdrop.open { display: flex; }
+        .lightbox-content { position: relative; max-width: 96vw; max-height: 92vh; outline: none; }
+        .lightbox-image { max-width: 96vw; max-height: 92vh; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: block; }
+        .lightbox-caption { text-align: center; color: #fff; margin-top: 12px; font-family: 'Tajawal', sans-serif; font-size: clamp(14px, 2.4vw, 18px); opacity: 0.9; }
+        .lightbox-close, .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; border-radius: 50%; border: none; background: rgba(255,255,255,0.15); color: #fff; font-size: 24px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; backdrop-filter: blur(4px); }
+        .lightbox-prev { left: -64px; }
+        .lightbox-next { right: -64px; }
+        .lightbox-close { top: -56px; right: 0; left: auto; transform: none; width: 44px; height: 44px; }
+        .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.25); }
+        @media (max-width: 768px) {
+            .lightbox-prev { left: 8px; }
+            .lightbox-next { right: 8px; }
+            .lightbox-close { top: 8px; right: 8px; }
         }
-
-        .header-icon-link.phone:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
-            animation: shake 0.5s ease;
-        }
-
+        body.lightbox-open { overflow: hidden; }
     </style>
 </head>
 <body>
@@ -1635,15 +482,15 @@
         <div class="container header-inner">
             <button class="menu-toggle" aria-expanded="false" aria-controls="primary-nav">☰</button>
             <div class="logo">
-                <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/رقش-العمارةfinal11-e1760205227124.png" alt="Spaces Logo">
+                <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/رقش-العمارةfinal11-e1760205227124.png" alt="Raqsh Architecture Logo">
             </div>
             <nav id="primary-nav">
-                <div class="nav-item active" data-section="home">من نحن</div>
-                <div class="nav-item" data-section="vision">رؤيتنا</div>
-                <div class="nav-item" data-section="team">فريقنا</div>
-                <div class="nav-item" data-section="projects">مشاريعنا</div>
-                <div class="nav-item" data-section="principles">مبادؤنا</div>
-                <div class="nav-item" data-section="designs">تصاميم خاصة</div>
+                <div class="nav-item active" data-section="home">About Us</div>
+                <div class="nav-item" data-section="vision">Our Vision</div>
+                <div class="nav-item" data-section="team">Our Team</div>
+                <div class="nav-item" data-section="projects">Projects</div>
+                <div class="nav-item" data-section="principles">Our Principles</div>
+                <div class="nav-item" data-section="designs">Special Designs</div>
             </nav>
             <div class="header-actions">
                 <a href="https://www.instagram.com/raqsh_architecture/?igsh=cmRldm9nOGpheDVo#" target="_blank" class="header-icon-link instagram" title="Instagram">
@@ -1657,50 +504,49 @@
                 </a>
                 <div class="language-switcher">
                     <button class="language-btn" id="languageBtn">
-                        <img src="https://flagcdn.com/w40/sa.png" alt="علم السعودية">
-                        <span>العربية</span>
+                        <img src="https://flagcdn.com/w40/gb.png" alt="UK Flag">
+                        <span>English</span>
                     </button>
                     <div class="language-dropdown" id="languageDropdown">
-                        <a href="https://raqsh-architecture.org/" class="language-option current">
-                            <img src="https://flagcdn.com/w40/sa.png" alt="علم السعودية" loading="lazy" decoding="async">
-                            <span>العربية</span>
-                        </a>
-                        <a href="https://raqsh-architecture.org/index.php/en/elementor-7-english/" class="language-option">
-                            <img src="https://flagcdn.com/w40/gb.png" alt="علم بريطانيا" loading="lazy" decoding="async">
+                        <a href="https://raqsh-architecture.org/index.php/en/elementor-7-english/" class="language-option current">
+                            <img src="https://flagcdn.com/w40/gb.png" alt="UK Flag">
                             <span>English</span>
+                        </a>
+                        <a href="https://raqsh-architecture.org/" class="language-option">
+                            <img src="https://flagcdn.com/w40/sa.png" alt="Saudi Arabia Flag">
+                            <span>العربية</span>
                         </a>
                     </div>
                 </div>
                 <span id="lang-switcher-placeholder" style="display:none"></span>
-                <button type="button" class="connect-btn">تواصل معنا</button>
+                <button type="button" class="connect-btn">Contact Us</button>
             </div>
-            
         </div>
     </header>
 
     <div class="divider"></div>
 
-    <!-- من نحن-->
+    <!-- About Us -->
     <div id="home" class="section active">
         <div class="container">
             <div class="hero-section">
                 <div class="hero-content">
                     <h1>
-                        <span class="hero-title-main">من نحن</span>
-                        <span class="hero-title-brand">رَقْش العِمَارة</span>
+                        <span class="hero-title-main">About Us</span>
+                        <span class="hero-title-brand">Raqsh Architecture</span>
                         <div class="decorative-line"></div>
                     </h1>
-                    
+
                     <div class="hero-description">
-                        <strong>رَقش العمارة</strong> هو فن يجسّد جمال التفاصيل ودقة الحرفية في التصميم، حيث تلتقي الهندسة بالإبداع لتشكّل مزيجًا متناغمًا من الزخارف والأشكال التي تعكس هوية المكان وروحه. نهدف من خلال أعمالنا إلى إحياء التراث المعماري بأسلوب عصري يجمع بين الأصالة والابتكار.
+                        <strong>Raqsh Architecture</strong> is an art that embodies the beauty of detail and the precision of craftsmanship in design, where engineering meets creativity to form a harmonious blend of ornaments and forms that reflect the identity and spirit of place. Our mission is to revive architectural heritage with a contemporary approach that fuses authenticity with innovation.
                     </div>
                 </div>
-                
+
                 <div class="hero-image">
                     <div class="hero-image-wrapper" id="heroImageSlider">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/رقش-العمارةfinal11.png" alt="لوجو رقش العمارة" class="logo active" data-index="0">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/مرسومة.jpg" alt="مبنى تحت الإنشاء" data-index="1">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/بالواقع.jpg" alt="مبنى حقيقي" data-index="2">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/رقش-العمارةfinal11.png" alt="Raqsh Architecture Logo" class="logo active" data-index="0">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/مرسومة.jpg" alt="Building under construction (render)" data-index="1">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/بالواقع.jpg" alt="Real building" data-index="2">
                         <div class="hero-image-overlay"></div>
                     </div>
                     <div class="sparkle sparkle-1">✦</div>
@@ -1712,40 +558,40 @@
 
             <div class="bottom-section">
                 <div class="contact-card" id="contact">
-                    <h3 class="contact-title">تواصل معنا</h3>
+                    <h3 class="contact-title">Contact Us</h3>
                     <div class="contact-methods">
                         <a href="mailto:info@raqsh-architecture.org" class="contact-item">
                             <div class="contact-icon email">✉️</div>
                             <div class="contact-info">
-                                <span class="contact-label">البريد الإلكتروني</span>
+                                <span class="contact-label">Email</span>
                                 <span class="contact-value">info@raqsh-architecture.org</span>
                             </div>
                         </a>
-                        
+
                         <a href="https://wa.me/966551176917" target="_blank" class="contact-item">
                             <div class="contact-icon whatsapp">💬</div>
                             <div class="contact-info">
-                                <span class="contact-label">واتساب</span>
+                                <span class="contact-label">WhatsApp</span>
                                 <span class="contact-value">+966551176917</span>
                             </div>
                         </a>
-                        
+
                         <a href="tel:+966551176917" class="contact-item">
                             <div class="contact-icon phone">📞</div>
                             <div class="contact-info">
-                                <span class="contact-label">اتصل بنا</span>
+                                <span class="contact-label">Call Us</span>
                                 <span class="contact-value">+966551176917</span>
                             </div>
                         </a>
                     </div>
-                    
+
                     <div class="registration-info">
                         <div class="registration-item">
-                            <span class="registration-label">الرقم الضريبي</span>
+                            <span class="registration-label">VAT Number</span>
                             <span class="registration-value">313021234700003</span>
                         </div>
                         <div class="registration-item">
-                            <span class="registration-label">السجل التجاري</span>
+                            <span class="registration-label">Commercial Registration</span>
                             <span class="registration-value">7050172720</span>
                         </div>
                     </div>
@@ -1755,9 +601,9 @@
 
                 <div class="about-section">
                     <div class="partners">
-                        <h2 class="partners-title">شركاؤنا</h2>
+                        <h2 class="partners-title">Our Partners</h2>
                         <div class="partners-image">
-                            <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/شركاؤنا334.png" alt="شركاؤنا">
+                            <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/شركاؤنا334.png" alt="Our Partners">
                         </div>
                     </div>
                 </div>
@@ -1765,116 +611,109 @@
         </div>
     </div>
 
-    <!-- قسم رؤيتنا - تصميم معماري محسّن -->
+    <!-- Our Vision - Architectural design -->
     <div id="vision" class="section">
         <div class="vision-container">
-            <!-- عنوان جديد -->
+            <!-- New header -->
             <div class="vision-header-new">
-                <h2>رؤيتنا</h2>
-                <p>نسعى لإنشاء مساحات حضرية مستدامة تجمع بين الجمال والوظيفة والاستدامة البيئية</p>
+                <h2>Our Vision</h2>
+                <p>We strive to create sustainable urban spaces that unite beauty, function, and environmental responsibility.</p>
             </div>
 
-            <!-- محتوى الرؤية -->
+            <!-- Vision content -->
             <div class="vision-content">
                 <div class="vision-grid">
-                    <!-- بطاقة 1: الاستدامة -->
+                    <!-- Card 1: Sustainability -->
                     <div class="vision-card">
                         <div class="vision-card-icon">🌱</div>
-                        <h3 class="vision-card-title">الاستدامة البيئية</h3>
+                        <h3 class="vision-card-title">Environmental Sustainability</h3>
                         <p class="vision-card-desc">
-                            نلتزم بتطبيق معايير البناء الأخضر والاستخدام الأمثل للموارد الطبيعية في جميع مشاريعنا، مع التركيز على تقليل البصمة الكربونية وتعزيز كفاءة الطاقة.
+                            We commit to green building standards and optimal use of natural resources across all our projects, focusing on reducing the carbon footprint and enhancing energy efficiency.
                         </p>
                     </div>
 
-                    <!-- بطاقة 2: الابتكار -->
+                    <!-- Card 2: Innovation -->
                     <div class="vision-card">
                         <div class="vision-card-icon">💡</div>
-                        <h3 class="vision-card-title">الابتكار المعماري</h3>
+                        <h3 class="vision-card-title">Architectural Innovation</h3>
                         <p class="vision-card-desc">
-                            نقدم تصاميم معمارية مبتكرة تجمع بين الأصالة والحداثة، مستخدمين أحدث التقنيات والمواد لخلق مساحات فريدة تعكس الهوية الثقافية للمجتمع.
+                            We deliver innovative architecture that blends authenticity and modernity, using the latest technologies and materials to craft spaces that reflect cultural identity.
                         </p>
                     </div>
 
-                    <!-- بطاقة 3: الجودة -->
+                    <!-- Card 3: Quality -->
                     <div class="vision-card">
                         <div class="vision-card-icon">⭐</div>
-                        <h3 class="vision-card-title">التميز والجودة</h3>
+                        <h3 class="vision-card-title">Excellence & Quality</h3>
                         <p class="vision-card-desc">
-                            نحرص على تقديم أعلى معايير الجودة في كل مشروع، من التصميم الأولي حتى التسليم النهائي، مع اهتمام دقيق بكل التفاصيل لضمان رضا عملائنا.
+                            We uphold the highest quality standards in every project—from concept to handover—with meticulous attention to detail to ensure client satisfaction.
                         </p>
                     </div>
 
-                    <!-- بطاقة 4: المجتمع -->
+                    <!-- Card 4: Community -->
                     <div class="vision-card">
                         <div class="vision-card-icon">🏘️</div>
-                        <h3 class="vision-card-title">خدمة المجتمع</h3>
+                        <h3 class="vision-card-title">Serving the Community</h3>
                         <p class="vision-card-desc">
-                            نؤمن بأن العمارة الجيدة تخدم المجتمع وتساهم في تحسين جودة حياة الناس، من خلال خلق مساحات حضرية تعزز التفاعل الاجتماعي والرفاهية.
+                            We believe good architecture serves society and elevates quality of life by creating urban spaces that encourage social interaction and wellbeing.
                         </p>
                     </div>
 
-                    <!-- بطاقة 5: التراث -->
+                    <!-- Card 5: Heritage -->
                     <div class="vision-card">
                         <div class="vision-card-icon">🕌</div>
-                        <h3 class="vision-card-title">الأصالة والتراث</h3>
+                        <h3 class="vision-card-title">Authenticity & Heritage</h3>
                         <p class="vision-card-desc">
-                            نحترم التراث المعماري ونسعى لإحيائه بأسلوب عصري، مع الحفاظ على الهوية الثقافية والقيم الأصيلة في كل تصميم نقدمه.
+                            We respect architectural heritage and seek to revive it in a contemporary way, preserving cultural identity and core values in every design we present.
                         </p>
                     </div>
 
-                    <!-- بطاقة 6: المستقبل -->
+                    <!-- Card 6: Future -->
                     <div class="vision-card">
                         <div class="vision-card-icon">🚀</div>
-                        <h3 class="vision-card-title">مدن المستقبل</h3>
+                        <h3 class="vision-card-title">Cities of the Future</h3>
                         <p class="vision-card-desc">
-                            نحلم بمدن المستقبل الذكية التي توفر بيئة صحية ومريحة لجميع سكانها، مع دمج التكنولوجيا الحديثة والتخطيط المستدام.
+                            We envision smart future cities that offer healthy, comfortable environments for all residents, integrating modern technology with sustainable planning.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- قسم الاقتباس -->
+            <!-- Quote -->
             <div class="vision-quote-section">
                 <div class="vision-quote-wrapper">
                     <div class="vision-quote-mark">"</div>
                     <p class="vision-quote-text">
-                        العمارة هي فن يجمع بين الجمال والوظيفة، وهي تعبير عن روح المجتمع وتطلعاته نحو المستقبل
+                        Architecture is the art that unites beauty and function; it expresses the spirit of society and its aspirations for the future.
                     </p>
-                    <p class="vision-quote-author">— فريق رقش العمارة</p>
+                    <p class="vision-quote-author">— Raqsh Architecture Team</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- قسم فريقنا -->
+    <!-- Our Team -->
     <div id="team" class="section">
         <div class="team-container container">
             <div class="team-header">
-                <h2>فريقنا</h2>
-                <p>نخبة من المحترفين والمبدعين في مجال العمارة والتصميم</p>
+                <h2>Our Team</h2>
+                <p>A select group of professionals and creatives in architecture and design</p>
             </div>
 
             <div class="team-grid">
-                <!-- عضو 1 -->
+                <!-- Member 1 -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/0da08e3c-06f1-4a0b-a7b6-18299a34de70.jpg" alt="  المهندسة افنان النفيعي ">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/0da08e3c-06f1-4a0b-a7b6-18299a34de70.jpg" alt="Eng. Afnan Alnifaee">
                     </div>
                     <div class="team-member-info">
-                        <h3 class="team-member-name">المهندسه افنان النفيعي </h3>
-                        <p class="team-member-position"> المؤسس والرئيس التنفيذي لمكتب رقش العمارة</p>
+                        <h3 class="team-member-name">المهندسه افنان النفيعي</h3>
+                        <p class="team-member-position">Founder and CEO of Raqsh Architecture</p>
                     </div>
                     <div class="team-member-overlay">
-                        <!-- <h3 >المهندسه افنان النفيعي </h3> -->
-                        <!-- <p > المؤسس والرئيس التنفيذي لمكتب رقش العمارة</p> -->
-                        <h3> حاصلة على ماجستير فى العمارة وعلوم البناء من جامعة الملك سعود</h3>
-                        <h4>عضو جمعيه العمران
-                            <br> 
-                            عضو الهيئه السعوديه لعلوم العمران  شعبة التراث العمراني 
-                            </h4>
-                        <p>ومتخصص في التوثيق المعماري 
-                            <br>وحاصله على براءه اختراع في العزل الحراري و شهادة التصميم الصناعي من الهئية السعودية الملكيه الفكرية 
-                            عضو مشارك في أمانة الطائف لمساهمة في تحقيق الموجهات التصميمية في عمارة الطائف</p>
+                        <h3>Holds a Master’s in Architecture & Building Science from King Saud University</h3>
+                        <h4>Member of Umran Society<br>Member of the Saudi Society for Urban Sciences — Urban Heritage Division</h4>
+                        <p>Specialized in architectural documentation.<br>Holds a patent in thermal insulation and an industrial design certificate from the Saudi Authority for Intellectual Property. Associate member at Taif Municipality contributing to design guidelines for Taif architecture.</p>
                         <div class="team-member-social">
                             <div class="social-icon">📧</div>
                             <div class="social-icon">📞</div>
@@ -1882,19 +721,18 @@
                     </div>
                 </div>
 
-                <!-- عضو 2 -->
+                <!-- Member 2 -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt="الاستاذعبدالرحمن العتيبي ">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt="Mr. Abdulrahman Alotaibi">
                     </div>
                     <div class="team-member-info">
-                        <h3 class="team-member-name">  الاستاذعبدالرحمن العتيبي</h3>
-                        <p class="team-member-position">  نائب الرئيس التنفيذي لمكتب رقش العمارة</p>
+                        <h3 class="team-member-name">الاستاذعبدالرحمن العتيبي</h3>
+                        <p class="team-member-position">Deputy CEO of Raqsh Architecture</p>
                     </div>
                     <div class="team-member-overlay">
-                        <h3> تخصص علوم ادارية وإدارة جودة جامعة الملك عبدالعزيز </h3>
-                        <!-- <h4>مهندسة معمارية رئيسية</h4> -->
-                        <p>    ادارة اعمال من معهد الإدارة السعودي</p>
+                        <h3>Specialization in Administrative Sciences & Quality Management, King Abdulaziz University</h3>
+                        <p>Business Administration, Institute of Public Administration (Saudi Arabia).</p>
                         <div class="team-member-social">
                             <div class="social-icon">📧</div>
                             <div class="social-icon">📞</div>
@@ -1902,20 +740,18 @@
                     </div>
                 </div>
 
-                <!-- عضو 3 -->
+                <!-- Member 3 -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt=" مهندس احمد سالم">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt="Eng. Ahmed Salem">
                     </div>
                     <div class="team-member-info">
                         <h3 class="team-member-name">مهندس احمد سالم</h3>
-                        <p class="team-member-position"> رئيس الإدارة الهندسية لدى شركة رقش العمارة</p>
+                        <p class="team-member-position">Head of Engineering at Raqsh Architecture</p>
                     </div>
                     <div class="team-member-overlay">
-                        <h3> رئيس الإدارة الهندسية</h3>
-                        <!-- <h4>مدير التصميم</h4> -->
-                        <p>خبرة تتعدي ال٢٥ عاما عضو الهيئة السعودية للمهندسين بدرجة مستشار
-                            قام بتصميم وتنفيذ مشاريع كبرى بالمملكه والمطورين والهيئات الحكومية</p>
+                        <h3>Head of Engineering</h3>
+                        <p>Over 25 years of experience. Member of the Saudi Council of Engineers (Consultant grade). Designed and delivered major projects across the Kingdom for developers and government authorities.</p>
                         <div class="team-member-social">
                             <div class="social-icon">📧</div>
                             <div class="social-icon">📞</div>
@@ -1923,19 +759,19 @@
                     </div>
                 </div>
 
-                <!-- عضو 4 -->
+                <!-- Member 4 -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt=" صفوان محمد علي">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt="Eng. Safwan Mohammed Ali">
                     </div>
                     <div class="team-member-info">
-                        <h3 class="team-member-name"> صفوان محمد علي</h3>
-                        <p class="team-member-position">  مهندس كهروميكانيكي لدى شركة رقش العمارة</p>
+                        <h3 class="team-member-name">صفوان محمد علي</h3>
+                        <p class="team-member-position">Electromechanical Engineer at Raqsh Architecture</p>
                     </div>
                     <div class="team-member-overlay">
-                        <h3> مهندس كهربائي بخبرة ٢٣ عامًا</h3>
-                        <h4>  متخصص في التصميم والإدارة والاستشارات، وله خبرة واسعة في مشاريع خاصة في القصور والفلل وصالات العرض.</h4>
-                        <p> تشمل خبرته اختيار وتصميم وحدات الإضاءة المخصصة، بالإضافة إلى إضاءة المناظر الطبيعية والحدائق والملاعب، باستخدام أحدث برامج التصميم.</p>
+                        <h3>Electrical engineer with 23 years of experience</h3>
+                        <h4>Specialized in design, management, and consulting; extensive experience with private palaces, villas, and showrooms.</h4>
+                        <p>Expert in selecting and designing custom lighting fixtures, as well as landscape, garden, and field lighting using the latest design software.</p>
                         <div class="team-member-social">
                             <div class="social-icon">📧</div>
                             <div class="social-icon">📞</div>
@@ -1943,20 +779,19 @@
                     </div>
                 </div>
 
-                <!-- عضو 5 -->
+                <!-- Member 5 -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/0da08e3c-06f1-4a0b-a7b6-18299a34de70.jpg" alt=" المهندسة الهنوف الحميدي ">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/0da08e3c-06f1-4a0b-a7b6-18299a34de70.jpg" alt="Eng. Alhanouf Alhumeidi">
                     </div>
                     <div class="team-member-info">
-                        <h3 class="team-member-name">مهندسة الهنوف الحميدي </h3>
-                        <p class="team-member-position">مستشار تصميم مستدام في رقش العمارة </p>
+                        <h3 class="team-member-name">مهندسة الهنوف الحميدي</h3>
+                        <p class="team-member-position">Sustainable Design Consultant at Raqsh Architecture</p>
                     </div>
                     <div class="team-member-overlay">
-                        <h3> محاضر في جامعة جدة</h3>
-                        <h4> حاصلة على ماجستير في العمارة المستدامة وبكالوريوس في التصميم الداخلي</h4>
-                        <p> أعمل كمستشار تصميم مستدام في رقش العمارة، أركز على تطوير حلول متكاملة تربط بين الأداء البيئي ورفاهية المستخدم وجودة الفضاء المعماري.
-                        </p>
+                        <h3>Lecturer at University of Jeddah</h3>
+                        <h4>Holds a Master’s in Sustainable Architecture and a Bachelor’s in Interior Design</h4>
+                        <p>I work as a Sustainable Design Consultant at Raqsh Architecture, focusing on integrated solutions that connect environmental performance, user wellbeing, and the quality of architectural space.</p>
                         <div class="team-member-social">
                             <div class="social-icon">📧</div>
                             <div class="social-icon">📞</div>
@@ -1964,74 +799,78 @@
                     </div>
                 </div>
 
-                <!-- عضو 6 -->
+                <!-- Member 6 -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt=" مهندس وجد النفيعي">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt="Eng. Wajd Alnifaee">
                     </div>
                     <div class="team-member-info">
-                        <h3 class="team-member-name"> مهندس وجد النفيعي</h3>
-                        <p class="team-member-position">  مصمم داخلي لدى شركة رقش العمارة</p>
+                        <h3 class="team-member-name">مهندس وجد النفيعي</h3>
+                        <p class="team-member-position">Interior Designer at Raqsh Architecture</p>
                     </div>
                     <div class="team-member-overlay">
-                        <h3>م. وجد النفيعي </h3>
-                        <h4> مصمم داخلي بشركة رقش العمارة</h4>
-                        <p>اعمل كمصمم داخلى لدى شركة رقش العمارة</p>
+                        <h3>Eng. Wajd Alnifaee</h3>
+                        <h4>Interior Designer at Raqsh Architecture</h4>
+                        <p>Works as an interior designer at Raqsh Architecture.</p>
                         <div class="team-member-social">
                             <div class="social-icon">📧</div>
                             <div class="social-icon">📞</div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Member 7 -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/0da08e3c-06f1-4a0b-a7b6-18299a34de70.jpg" alt=" الاستاذة اروى العتيبي ">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/0da08e3c-06f1-4a0b-a7b6-18299a34de70.jpg" alt="Ms. Arwa Alotaibi">
                     </div>
                     <div class="team-member-info">
-                        <h3 class="team-member-name">   الاستاذة اروى العتيبي </h3>
-                        <p class="team-member-position">  مستشار قانوني لدى شركة رقش العمارة</p>
+                        <h3 class="team-member-name">الاستاذة اروى العتيبي</h3>
+                        <p class="team-member-position">Legal Consultant at Raqsh Architecture</p>
                     </div>
                     <div class="team-member-overlay">
-                        <h3> اخصائي قانوني</h3>
-                        <h4>تخصص أنظمة قانونية ،جامعة الملك عبدالعزيز  </h4>
-                        <p>حاصله على شهاده تأسيس واداره الشركات في النظام السعودي ،من معهد الادارة العامة</p>
+                        <h3>Legal Specialist</h3>
+                        <h4>Major in Legal Systems, King Abdulaziz University</h4>
+                        <p>Certified in company incorporation and management within the Saudi legal system — Institute of Public Administration.</p>
                         <div class="team-member-social">
                             <div class="social-icon">📧</div>
                             <div class="social-icon">📞</div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Member 8 -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt=" مهندس عبدالمجيد النفيعي">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt="Eng. Abdulmajeed Alnifaee">
                     </div>
                     <div class="team-member-info">
-                        <h3 class="team-member-name">  مهندس عبدالمجيد النفيعي</h3>
-                        <p class="team-member-position">  مدير رئيس قسم المالية والإدارة لدى شركة رقش العمارة</p>
+                        <h3 class="team-member-name">مهندس عبدالمجيد النفيعي</h3>
+                        <p class="team-member-position">Head of Finance & Administration at Raqsh Architecture</p>
                     </div>
                     <div class="team-member-overlay">
-                        <h3> خبره اكثر من ١٩ سنه في ادارة الاعمال والتسويق والمبيعات</h3>
-                        <h4>  عمل في كبرى الشركات في السعوديه</h4>
-                        <p>وتم تعيينه ل ادارة الاعمال في دولة الصين وسنغافورة ل اكثر من ٤ سنوات قام فيها بتسويق منتجات جديده وتطوير حلول مبتكره لخدمة الاسواق العالميه</p>
+                        <h3>Over 19 years’ experience in business management, marketing, and sales</h3>
+                        <h4>Worked at leading companies in Saudi Arabia</h4>
+                        <p>Appointed to lead operations in China and Singapore for over 4 years, marketing new products and developing innovative solutions for global markets.</p>
                         <div class="team-member-social">
                             <div class="social-icon">📧</div>
                             <div class="social-icon">📞</div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Member 9 -->
                 <div class="team-member">
                     <div class="team-member-image">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt=" الاستاذ يزيد النفيعي">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/932871fd-b020-4baf-989d-8950d5aec433.jpg" alt="Mr. Yazeed Alnifaee">
                     </div>
                     <div class="team-member-info">
-                        <h3 class="team-member-name">  الاستاذ يزيد النفيعي</h3>
-                        <p class="team-member-position">     المدير العام لدى شركة رقش العمارة</p>
+                        <h3 class="team-member-name">الاستاذ يزيد النفيعي</h3>
+                        <p class="team-member-position">General Manager at Raqsh Architecture</p>
                     </div>
                     <div class="team-member-overlay">
-                        <h3>
-                            تخصص أنظمة قانونية جامعة الملك عبدالعزيز </h3>
-                        <!-- <h4>  </h4> -->
-                        <p> ادارة اعمال من المعهد السعودي للأعمال - عمل في الإدارات بالقطاعات الحكوميه</p>
+                        <h3>Legal Systems major, King Abdulaziz University</h3>
+                        <p>Business Administration, Saudi Institute of Business — Experience in administrative roles within the public sector.</p>
                         <div class="team-member-social">
                             <div class="social-icon">📧</div>
                             <div class="social-icon">📞</div>
@@ -2042,177 +881,188 @@
         </div>
     </div>
 
-    <!-- قسم المشاريع -->
+    <!-- Projects -->
     <div id="projects" class="section">
         <div class="projects-new-container">
             <div class="projects-new-header">
-                <h2>مشاريعنا</h2>
-                <p>نفخر بتقديم مجموعة متنوعة من المشاريع المعمارية المبتكرة</p>
+                <h2>Our Projects</h2>
+                <p>We take pride in delivering a diverse range of innovative architectural projects</p>
             </div>
 
             <div class="projects-masonry">
-                <!-- مشروع 1 -->
+                <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-card-image">
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="مشروع سكني">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80" alt="Residential project">
                         <div class="project-card-icon">🏢</div>
                     </div>
                     <div class="project-card-overlay">
-                        <span class="project-card-category">سكني</span>
-                        <h3 class="project-card-title">مجمع الواحة السكني</h3>
-                        <p class="project-card-desc">مشروع سكني متكامل يجمع بين الفخامة والراحة مع تصميم عصري مستدام</p>
+                        <span class="project-card-category">Residential</span>
+                        <h3 class="project-card-title">Oasis Residential Complex</h3>
+                        <p class="project-card-desc">A fully integrated residential project combining luxury and comfort with sustainable contemporary design.</p>
                     </div>
                 </div>
 
-                <!-- مشروع 2 -->
+                <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-card-image">
-                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="مشروع تجاري">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80" alt="Commercial project">
                         <div class="project-card-icon">🏪</div>
                     </div>
                     <div class="project-card-overlay">
-                        <span class="project-card-category">تجاري</span>
-                        <h3 class="project-card-title">مركز الأعمال الحديث</h3>
-                        <p class="project-card-desc">مبنى تجاري متطور بتصميم ذكي يلبي احتياجات الشركات العصرية</p>
+                        <span class="project-card-category">Commercial</span>
+                        <h3 class="project-card-title">Modern Business Center</h3>
+                        <p class="project-card-desc">A smart commercial building tailored to the needs of contemporary companies.</p>
                     </div>
                 </div>
 
-                <!-- مشروع 3 -->
+                <!-- Project 3 -->
                 <div class="project-card">
                     <div class="project-card-image">
-                        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&q=80" alt="مشروع ثقافي">
+                        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&q=80" alt="Cultural project">
                         <div class="project-card-icon">🎭</div>
                     </div>
                     <div class="project-card-overlay">
-                        <span class="project-card-category">ثقافي</span>
-                        <h3 class="project-card-title">المركز الثقافي</h3>
-                        <p class="project-card-desc">مساحة ثقافية تجمع بين التراث والحداثة لإثراء المجتمع</p>
+                        <span class="project-card-category">Cultural</span>
+                        <h3 class="project-card-title">Cultural Center</h3>
+                        <p class="project-card-desc">A cultural hub merging heritage and modernity to enrich community life.</p>
                     </div>
                 </div>
 
-                <!-- مشروع 4 -->
+                <!-- Project 4 -->
                 <div class="project-card">
                     <div class="project-card-image">
-                        <img src="https://images.unsplash.com/photo-1511452885600-a3d2c9148a31?w=800&q=80" alt="مشروع فندقي">
+                        <img src="https://images.unsplash.com/photo-1511452885600-a3d2c9148a31?w=800&q=80" alt="Hospitality project">
                         <div class="project-card-icon">🏨</div>
                     </div>
                     <div class="project-card-overlay">
-                        <span class="project-card-category">فندقي</span>
-                        <h3 class="project-card-title">فندق الأفق</h3>
-                        <p class="project-card-desc">فندق خمس نجوم بتصميم معماري فريد يوفر تجربة إقامة استثنائية</p>
+                        <span class="project-card-category">Hospitality</span>
+                        <h3 class="project-card-title">Horizon Hotel</h3>
+                        <p class="project-card-desc">A five-star hotel with distinctive architecture offering an exceptional stay.</p>
                     </div>
                 </div>
 
-                <!-- مشروع 5 -->
+                <!-- Project 5 -->
                 <div class="project-card">
                     <div class="project-card-image">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="مشروع تعليمي">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="Educational project">
                         <div class="project-card-icon">🎓</div>
                     </div>
                     <div class="project-card-overlay">
-                        <span class="project-card-category">تعليمي</span>
-                        <h3 class="project-card-title">مجمع المعرفة التعليمي</h3>
-                        <p class="project-card-desc">مؤسسة تعليمية حديثة مصممة لتحفيز الإبداع والتعلم</p>
+                        <span class="project-card-category">Educational</span>
+                        <h3 class="project-card-title">Knowledge Educational Complex</h3>
+                        <p class="project-card-desc">A modern educational institution designed to inspire creativity and learning.</p>
                     </div>
                 </div>
 
-                <!-- مشروع 6 -->
+                <!-- Project 6 -->
                 <div class="project-card">
                     <div class="project-card-image">
-                        <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80" alt="مشروع رياضي">
+                        <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80" alt="Sports project">
                         <div class="project-card-icon">⚽</div>
                     </div>
                     <div class="project-card-overlay">
-                        <span class="project-card-category">رياضي</span>
-                        <h3 class="project-card-title">النادي الرياضي المتكامل</h3>
-                        <p class="project-card-desc">منشأة رياضية عالمية المستوى بمرافق متطورة</p>
+                        <span class="project-card-category">Sports</span>
+                        <h3 class="project-card-title">Integrated Sports Club</h3>
+                        <p class="project-card-desc">A world-class sports facility with advanced amenities.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- قسم المبادئ - Brand Identity Prism -->
+    <!-- Our Principles - Brand Identity Prism -->
     <div id="principles" class="section">
         <div class="prism-image-container">
-            <!-- العناصر الزخرفية -->
+            <!-- Decorative corners -->
             <div class="decorative-corner top-left"></div>
             <div class="decorative-corner top-right"></div>
             <div class="decorative-corner bottom-left"></div>
             <div class="decorative-corner bottom-right"></div>
 
-            <!-- العنوان الرئيسي -->
-            <h2 class="prism-image-title">مبادؤنا</h2>
+            <!-- Main title -->
+            <h2 class="prism-image-title">Our Principles</h2>
             <p class="prism-subtitle">
-                نؤمن بمجموعة من المبادئ الأساسية التي تشكل هويتنا وتوجه عملنا في كل مشروع نقوم به
+                We believe in a core set of principles that shape our identity and guide every project we undertake.
             </p>
 
-            <!-- الصورة الأولى -->
+            <!-- Image 1 -->
             <div class="prism-image-wrapper">
-                <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/مبادؤنا-1-scaled.jpg" alt="Brand Identity Prism - رقش العمارة" class="prism-main-image">
+                <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/مبادؤنا-1-scaled.jpg" alt="Brand Identity Prism - Raqsh Architecture" class="prism-main-image">
                 <div class="prism-image-caption">
-                    <strong>هرم الهوية المؤسسية</strong> - يوضح العناصر الأساسية التي تشكل هوية رقش العمارة
+                    <strong>Brand Identity Prism</strong> — shows the core elements that shape the identity of Raqsh Architecture
                 </div>
             </div>
-            
-            <!-- الصورة الثانية -->
+
+            <!-- Image 2 -->
             <div class="prism-image-wrapper">
-                <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-07-at-12.40.59-PM-2-scaled.jpeg" alt="مبادئ رقش العمارة - التفاصيل" class="prism-main-image">
+                <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-07-at-12.40.59-PM-2-scaled.jpeg" alt="Raqsh Architecture Principles — Details" class="prism-main-image">
                 <div class="prism-image-caption">
-                    <strong>تفاصيل المبادئ</strong> - نظرة أعمق على القيم والمعايير التي نلتزم بها
+                    <strong>Principle Details</strong> — a deeper look at the values and standards we uphold
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- قسم تصاميم خاصة -->
+    <!-- Special Designs -->
     <div id="designs" class="section">
         <div class="content-section container">
-            <h2>تصاميم خاصة</h2>
+            <h2>Special Designs</h2>
             <p style="font-size: clamp(16px, 2.8vw, 22px); line-height: 2; color: #333; font-weight: 500; margin-bottom: var(--space-4); text-align: center; max-width: 900px; margin-inline: auto;">
-                نقدم مجموعة متنوعة من <strong style="color: var(--brand-dark); font-weight: 800;">التصاميم الخاصة</strong> التي تلبي احتياجاتك وتعكس ذوقك الفريد.<br>
-                من <strong style="color: var(--accent);">تصميم الإنارة</strong> إلى <strong style="color: var(--accent);">الأثاث</strong> و<strong style="color: var(--accent);">ورق الجدران</strong>، نحن هنا لنحول رؤيتك إلى واقع.
+                We offer a wide variety of <strong style="color: var(--brand-dark); font-weight: 800;">special designs</strong> tailored to your needs and taste.<br>
+                From <strong style="color: var(--accent);">lighting design</strong> to <strong style="color: var(--accent);">furniture</strong> and <strong style="color: var(--accent);">wallpaper</strong>, we turn your vision into reality.
             </p>
-            
+
             <div class="designs-grid">
-                <!-- تصميم إنارة -->
+                <!-- Lighting Design -->
                 <div class="design-card">
                     <div class="design-image-wrapper">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/unnamed.jpg" alt="تصميم إنارة">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/unnamed.jpg" alt="Lighting Design">
                         <div class="design-icon">💡</div>
                         <div class="design-overlay">
-                            <h3 class="design-title">تصميم إنارة</h3>
+                            <h3 class="design-title">Lighting Design</h3>
                         </div>
                     </div>
                 </div>
 
-                <!-- تصميم أثاث -->
+                <!-- Furniture Design -->
                 <div class="design-card">
                     <div class="design-image-wrapper">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/تصميم-اثاث4.jpg" alt="تصميم أثاث">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/تصميم-اثاث4.jpg" alt="Furniture Design">
                         <div class="design-icon">🪑</div>
                         <div class="design-overlay">
-                            <h3 class="design-title">تصميم أثاث</h3>
+                            <h3 class="design-title">Furniture Design</h3>
                         </div>
                     </div>
                 </div>
 
-                <!-- تصميم ورق جدران -->
+                <!-- Wallpaper Design -->
                 <div class="design-card">
                     <div class="design-image-wrapper">
-                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/تصميم-ورق-حائط.jpg" alt="تصميم ورق جدران">
+                        <img src="https://raqsh-architecture.org/wp-content/uploads/2025/10/تصميم-ورق-حائط.jpg" alt="Wallpaper Design">
                         <div class="design-icon">🎨</div>
                         <div class="design-overlay">
-                            <h3 class="design-title">تصميم ورق جدران</h3>
+                            <h3 class="design-title">Wallpaper Design</h3>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Lightbox root -->
+    <div id="lightbox" class="lightbox-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="lightbox-content" tabindex="-1">
+            <button class="lightbox-close" aria-label="Close">✕</button>
+            <button class="lightbox-prev" aria-label="Previous">‹</button>
+            <img class="lightbox-image" alt="Zoomed image" />
+            <button class="lightbox-next" aria-label="Next">›</button>
+            <div class="lightbox-caption"></div>
         </div>
     </div>
 
     <script>
-        // تأثير الانتقال التلقائي بين الصور
+        // Auto image slider
         const heroSlider = document.getElementById('heroImageSlider');
         const heroImages = heroSlider.querySelectorAll('img');
         let currentImageIndex = 0;
@@ -2224,22 +1074,19 @@
             heroImages[currentImageIndex].classList.add('active');
         }
 
-        function startSlider() {
-            sliderInterval = setInterval(showNextImage, 3000); // تغيير الصورة كل 3 ثواني
-        }
+        function startSlider() { stopSlider(); sliderInterval = setInterval(showNextImage, 3000); }
+        function stopSlider() { clearInterval(sliderInterval); }
 
-        function stopSlider() {
-            clearInterval(sliderInterval);
-        }
-
-        // إيقاف الانتقال عند الـ hover واستئنافه عند المغادرة
+        // Pause on hover, resume on leave
         heroSlider.addEventListener('mouseenter', stopSlider);
         heroSlider.addEventListener('mouseleave', startSlider);
-
-        // بدء الانتقال التلقائي
+        const visibilityHandler = () => { if (document.hidden) { stopSlider(); } else { startSlider(); } };
+        document.addEventListener('visibilitychange', visibilityHandler);
+        window.addEventListener('blur', stopSlider);
+        window.addEventListener('focus', startSlider);
         startSlider();
 
-        // زر همبرجر لفتح/إغلاق القائمة
+        // Hamburger: open/close mobile menu
         const menuToggle = document.querySelector('.menu-toggle');
         const nav = document.getElementById('primary-nav');
         if (menuToggle && nav) {
@@ -2250,12 +1097,12 @@
             });
         }
 
-        // مبدل اللغات
+        // Language switcher
         const languageBtn = document.getElementById('languageBtn');
         const languageDropdown = document.getElementById('languageDropdown');
         const languageSwitcher = document.querySelector('.language-switcher');
         const langSwitcherPlaceholder = document.getElementById('lang-switcher-placeholder');
-        
+
         if (languageBtn && languageDropdown) {
             languageBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -2263,7 +1110,7 @@
                 languageDropdown.classList.toggle('active');
             });
 
-            // إغلاق القائمة المنسدلة عند النقر خارجها
+            // Close dropdown on outside click
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.language-switcher')) {
                     languageBtn.classList.remove('active');
@@ -2271,16 +1118,16 @@
                 }
             });
 
-            // منع إغلاق القائمة عند النقر على الخيارات (سيتم التوجيه للرابط)
+            // Allow navigation via links
             const languageOptions = document.querySelectorAll('.language-option');
             languageOptions.forEach(option => {
                 option.addEventListener('click', () => {
-                    // السماح بالتوجيه للرابط
+                    // navigate via link
                 });
             });
         }
 
-        // نقل مبدل اللغة داخل القائمة على الشاشات الصغيرة وإعادته على الكبيرة
+        // Move language switcher inside nav on small screens, restore on large
         function placeLanguageSwitcher() {
             if (!languageSwitcher || !nav || !langSwitcherPlaceholder) return;
             const isSmall = window.matchMedia('(max-width: 900px)').matches;
@@ -2294,21 +1141,15 @@
                     langSwitcherPlaceholder.before(languageSwitcher);
                     languageSwitcher.classList.remove('in-nav');
                 }
-                // أغلق القائمة المنسدلة إن كانت مفتوحة
                 languageBtn?.classList.remove('active');
                 languageDropdown?.classList.remove('active');
             }
         }
         placeLanguageSwitcher();
         window.addEventListener('resize', placeLanguageSwitcher);
-        // تأكيد الوضع الصحيح بعد فتح/إغلاق قائمة الهاتف
-        if (menuToggle && nav) {
-            menuToggle.addEventListener('click', () => {
-                placeLanguageSwitcher();
-            });
-        }
+        if (menuToggle && nav) { menuToggle.addEventListener('click', () => { placeLanguageSwitcher(); }); }
 
-        // التنقل بين الأقسام
+        // Navigation between sections
         const navItems = document.querySelectorAll('.nav-item');
         const sections = document.querySelectorAll('.section');
         navItems.forEach(item => {
@@ -2319,7 +1160,6 @@
                 navItems.forEach(navEl => navEl.classList.remove('active'));
                 item.classList.add('active');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                // إغلاق القائمة بعد الاختيار على الموبايل
                 if (nav.classList.contains('open')) {
                     nav.classList.remove('open');
                     menuToggle.classList.remove('open');
@@ -2328,24 +1168,83 @@
             });
         });
 
-        // زر التواصل: الذهاب إلى قسم من نحن ثم تمرير إلى بطاقة التواصل
+        // Contact button: show About section then scroll to contact card
         const connectButton = document.querySelector('.connect-btn');
         if (connectButton) {
             connectButton.addEventListener('click', () => {
-                // إظهار قسم من نحن إذا لم يكن ظاهرًا
                 sections.forEach(section => section.classList.remove('active'));
                 document.getElementById('home').classList.add('active');
                 navItems.forEach(navEl => navEl.classList.remove('active'));
                 const homeNavItem = Array.from(navItems).find(el => el.getAttribute('data-section') === 'home');
                 if (homeNavItem) homeNavItem.classList.add('active');
 
-                // تمرير سلس إلى بطاقة التواصل
                 const contactEl = document.getElementById('contact');
-                if (contactEl) {
-                    contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (contactEl) { contactEl.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
             });
         }
+
+        // Lightbox logic
+        (function initLightbox(){
+            const lightbox = document.getElementById('lightbox');
+            if (!lightbox) return;
+            const lightboxImage = lightbox.querySelector('.lightbox-image');
+            const lightboxCaption = lightbox.querySelector('.lightbox-caption');
+            const lightboxClose = lightbox.querySelector('.lightbox-close');
+            const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+            const lightboxNext = lightbox.querySelector('.lightbox-next');
+
+            const galleryImages = Array.from(document.querySelectorAll([
+                '.project-card-image img',
+                '.design-image-wrapper img',
+                '.prism-main-image'
+            ].join(',')));
+
+            let currentLightboxIndex = -1;
+            const openLightbox = (index) => {
+                if (index < 0 || index >= galleryImages.length) return;
+                currentLightboxIndex = index;
+                const img = galleryImages[index];
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt || '';
+                lightboxCaption.textContent = img.alt || '';
+                lightbox.classList.add('open');
+                lightbox.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('lightbox-open');
+            };
+            const closeLightbox = () => {
+                lightbox.classList.remove('open');
+                lightbox.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('lightbox-open');
+                currentLightboxIndex = -1;
+            };
+            const showPrev = () => { if (currentLightboxIndex > -1) openLightbox((currentLightboxIndex - 1 + galleryImages.length) % galleryImages.length); };
+            const showNext = () => { if (currentLightboxIndex > -1) openLightbox((currentLightboxIndex + 1) % galleryImages.length); };
+
+            galleryImages.forEach((img, idx) => { img.addEventListener('click', () => openLightbox(idx)); });
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightboxPrev.addEventListener('click', showPrev);
+            lightboxNext.addEventListener('click', showNext);
+            lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('open')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') showPrev();
+                if (e.key === 'ArrowRight') showNext();
+            });
+        })();
+
+        // Team overlay on mobile tap
+        (function initTeamOverlay(){
+            const teamMembers = document.querySelectorAll('.team-member');
+            teamMembers.forEach(member => {
+                member.addEventListener('click', () => {
+                    const isTouch = matchMedia('(hover: none)').matches;
+                    if (!isTouch) return;
+                    teamMembers.forEach(m => { if (m !== member) m.classList.remove('show-overlay'); });
+                    member.classList.toggle('show-overlay');
+                });
+            });
+        })();
     </script>
 </body>
 </html>
