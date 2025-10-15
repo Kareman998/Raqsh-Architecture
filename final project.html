@@ -1506,6 +1506,24 @@
             .connect-btn {
                 order: 4;
             }
+
+            /* عرض مبدل اللغة داخل قائمة الموبايل المفتوحة */
+            nav .language-switcher {
+                display: block;
+                margin-top: 8px;
+                padding-top: 8px;
+                border-top: 1px solid rgba(0,0,0,0.08);
+            }
+            nav .language-btn {
+                width: 100%;
+                justify-content: space-between;
+            }
+            nav .language-dropdown {
+                left: 0;
+                right: 0;
+                width: 100%;
+                min-width: unset;
+            }
         }
 
         @media (max-width: 768px) {
@@ -2216,6 +2234,34 @@
                 menuToggle.setAttribute('aria-expanded', String(open));
             });
         }
+
+        // نقل مبدل اللغة داخل قائمة الموبايل عند الشاشات الصغيرة
+        const headerActions = document.querySelector('.header-actions');
+        const languageSwitcher = document.querySelector('.language-switcher');
+
+        function moveLanguageSwitcherForMobile() {
+            if (!languageSwitcher || !nav || !headerActions) return;
+            const isMobile = window.matchMedia('(max-width: 900px)').matches;
+            if (isMobile) {
+                if (languageSwitcher.parentElement !== nav) {
+                    nav.appendChild(languageSwitcher);
+                }
+            } else {
+                if (languageSwitcher.parentElement !== headerActions) {
+                    headerActions.appendChild(languageSwitcher);
+                }
+            }
+        }
+
+        // تنفيذ عند التحميل الأولي
+        moveLanguageSwitcherForMobile();
+
+        // إعادة التموضع عند تغيير حجم الشاشة (مع تهدئة بسيطة)
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(moveLanguageSwitcherForMobile, 150);
+        });
 
         // مبدل اللغات
         const languageBtn = document.getElementById('languageBtn');
